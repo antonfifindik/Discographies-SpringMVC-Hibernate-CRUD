@@ -85,7 +85,7 @@ public class Labels {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", photo=" + Arrays.toString(photo) +
+      //          ", photo=" + Arrays.toString(photo) +
                 '}';
     }
 }

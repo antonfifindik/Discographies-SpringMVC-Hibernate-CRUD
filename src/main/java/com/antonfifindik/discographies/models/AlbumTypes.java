@@ -66,10 +66,10 @@ public class AlbumTypes {
         return result;
     }
 
-    @OneToMany(mappedBy = "albumTypesByAlbumTypeId")
-    public Collection<Albums> getAlbumsById() {
-        return albumsById;
-    }
+//    @OneToMany(mappedBy = "albumTypesByAlbumTypeId")
+//    public Collection<Albums> getAlbumsById() {
+//        return albumsById;
+//    }
 
     public void setAlbumsById(Collection<Albums> albumsById) {
         this.albumsById = albumsById;

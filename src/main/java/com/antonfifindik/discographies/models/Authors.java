@@ -81,20 +81,20 @@ public class Authors {
         return result;
     }
 
-    @OneToMany(mappedBy = "authorsByAuthorId")
-    public Collection<Albums> getAlbumsById() {
-        return albumsById;
-    }
+//    @OneToMany(mappedBy = "authorsByAuthorId")
+//    public Collection<Albums> getAlbumsById() {
+//        return albumsById;
+//    }
 
     public void setAlbumsById(Collection<Albums> albumsById) {
         this.albumsById = albumsById;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "author_type_id", referencedColumnName = "id", nullable = false)
-    public AuthorTypes getAuthorTypesByAuthorTypeId() {
-        return authorTypesByAuthorTypeId;
-    }
+//    @ManyToOne
+//    @JoinColumn(name = "author_type_id", referencedColumnName = "id", nullable = false)
+//    public AuthorTypes getAuthorTypesByAuthorTypeId() {
+//        return authorTypesByAuthorTypeId;
+//    }
 
     public void setAuthorTypesByAuthorTypeId(AuthorTypes authorTypesByAuthorTypeId) {
         this.authorTypesByAuthorTypeId = authorTypesByAuthorTypeId;
@@ -106,7 +106,7 @@ public class Authors {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", photo=" + Arrays.toString(photo) +
+//                ", photo=" + Arrays.toString(photo) +
                 ", albumsById=" + albumsById +
                 ", authorTypesByAuthorTypeId=" + authorTypesByAuthorTypeId +
                 '}';

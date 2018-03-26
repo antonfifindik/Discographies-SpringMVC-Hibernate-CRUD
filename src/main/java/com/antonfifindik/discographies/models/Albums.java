@@ -110,44 +110,44 @@ public class Albums {
         return result;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
-    public Authors getAuthorsByAuthorId() {
-        return authorsByAuthorId;
-    }
-
-    public void setAuthorsByAuthorId(Authors authorsByAuthorId) {
-        this.authorsByAuthorId = authorsByAuthorId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "album_type_id", referencedColumnName = "id", nullable = false)
-    public AlbumTypes getAlbumTypesByAlbumTypeId() {
-        return albumTypesByAlbumTypeId;
-    }
+//    @ManyToOne
+//    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
+//    public Authors getAuthorsByAuthorId() {
+//        return authorsByAuthorId;
+//    }
+//
+//    public void setAuthorsByAuthorId(Authors authorsByAuthorId) {
+//        this.authorsByAuthorId = authorsByAuthorId;
+//    }
+//
+//    @ManyToOne
+//    @JoinColumn(name = "album_type_id", referencedColumnName = "id", nullable = false)
+//    public AlbumTypes getAlbumTypesByAlbumTypeId() {
+//        return albumTypesByAlbumTypeId;
+//    }
 
     public void setAlbumTypesByAlbumTypeId(AlbumTypes albumTypesByAlbumTypeId) {
         this.albumTypesByAlbumTypeId = albumTypesByAlbumTypeId;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "record_type_id", referencedColumnName = "id", nullable = false)
-    public RecordTypes getRecordTypesByRecordTypeId() {
-        return recordTypesByRecordTypeId;
-    }
-
-    public void setRecordTypesByRecordTypeId(RecordTypes recordTypesByRecordTypeId) {
-        this.recordTypesByRecordTypeId = recordTypesByRecordTypeId;
-    }
-
-    @OneToMany(mappedBy = "albumsByAlbumId")
-    public Collection<Songs> getSongsById() {
-        return songsById;
-    }
-
-    public void setSongsById(Collection<Songs> songsById) {
-        this.songsById = songsById;
-    }
+//    @ManyToOne
+//    @JoinColumn(name = "record_type_id", referencedColumnName = "id", nullable = false)
+//    public RecordTypes getRecordTypesByRecordTypeId() {
+//        return recordTypesByRecordTypeId;
+//    }
+//
+//    public void setRecordTypesByRecordTypeId(RecordTypes recordTypesByRecordTypeId) {
+//        this.recordTypesByRecordTypeId = recordTypesByRecordTypeId;
+//    }
+//
+//    @OneToMany(mappedBy = "albumsByAlbumId")
+//    public Collection<Songs> getSongsById() {
+//        return songsById;
+//    }
+//
+//    public void setSongsById(Collection<Songs> songsById) {
+//        this.songsById = songsById;
+//    }
 
     @Override
     public String toString() {
@@ -156,7 +156,7 @@ public class Albums {
                 ", name='" + name + '\'' +
                 ", releaseDate=" + releaseDate +
                 ", length='" + length + '\'' +
-                ", cover=" + Arrays.toString(cover) +
+//                ", cover=" + Arrays.toString(cover) +
                 ", description='" + description + '\'' +
                 ", authorsByAuthorId=" + authorsByAuthorId +
                 ", albumTypesByAlbumTypeId=" + albumTypesByAlbumTypeId +

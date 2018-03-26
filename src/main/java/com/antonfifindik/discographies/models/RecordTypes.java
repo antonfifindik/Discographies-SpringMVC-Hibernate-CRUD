@@ -7,7 +7,7 @@ import java.util.Collection;
  * Created by Антон on 26.03.2018.
  */
 @Entity
-@Table(name = "record_types", schema = "db_discographies", catalog = "")
+@Table(name = "record_types", schema = "db_discographies")
 public class RecordTypes {
     private long id;
     private String name;
@@ -66,10 +66,10 @@ public class RecordTypes {
         return result;
     }
 
-    @OneToMany(mappedBy = "recordTypesByRecordTypeId")
-    public Collection<Albums> getAlbumsById() {
-        return albumsById;
-    }
+//    @OneToMany(mappedBy = "recordTypesByRecordTypeId")
+//    public Collection<Albums> getAlbumsById() {
+//        return albumsById;
+//    }
 
     public void setAlbumsById(Collection<Albums> albumsById) {
         this.albumsById = albumsById;

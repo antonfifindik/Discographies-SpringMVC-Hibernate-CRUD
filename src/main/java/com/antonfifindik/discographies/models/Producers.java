@@ -100,7 +100,7 @@ public class Producers {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", description='" + description + '\'' +
-                ", photo=" + Arrays.toString(photo) +
+     //           ", photo=" + Arrays.toString(photo) +
                 '}';
     }
 }

@@ -53,10 +53,10 @@ public class AuthorTypes {
         return result;
     }
 
-    @OneToMany(mappedBy = "authorTypesByAuthorTypeId")
-    public Collection<Authors> getAuthorsById() {
-        return authorsById;
-    }
+//    @OneToMany(mappedBy = "authorTypesByAuthorTypeId")
+//    public Collection<Authors> getAuthorsById() {
+//        return authorsById;
+//    }
 
     public void setAuthorsById(Collection<Authors> authorsById) {
         this.authorsById = authorsById;
