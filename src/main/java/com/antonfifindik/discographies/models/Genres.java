@@ -64,4 +64,12 @@ public class Genres {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Genres{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

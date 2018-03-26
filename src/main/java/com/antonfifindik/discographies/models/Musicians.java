@@ -92,4 +92,15 @@ public class Musicians {
         result = 31 * result + Arrays.hashCode(photo);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Musicians{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", description='" + description + '\'' +
+                ", photo=" + Arrays.toString(photo) +
+                '}';
+    }
 }

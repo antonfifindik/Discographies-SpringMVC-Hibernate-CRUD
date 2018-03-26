@@ -93,4 +93,14 @@ public class Producers {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Producers{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", description='" + description + '\'' +
+                ", photo=" + Arrays.toString(photo) +
+                '}';
+    }
 }

@@ -100,4 +100,15 @@ public class Authors {
         this.authorTypesByAuthorTypeId = authorTypesByAuthorTypeId;
     }
 
+    @Override
+    public String toString() {
+        return "Authors{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", photo=" + Arrays.toString(photo) +
+                ", albumsById=" + albumsById +
+                ", authorTypesByAuthorTypeId=" + authorTypesByAuthorTypeId +
+                '}';
+    }
 }

@@ -148,4 +148,20 @@ public class Albums {
     public void setSongsById(Collection<Songs> songsById) {
         this.songsById = songsById;
     }
+
+    @Override
+    public String toString() {
+        return "Albums{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", releaseDate=" + releaseDate +
+                ", length='" + length + '\'' +
+                ", cover=" + Arrays.toString(cover) +
+                ", description='" + description + '\'' +
+                ", authorsByAuthorId=" + authorsByAuthorId +
+                ", albumTypesByAlbumTypeId=" + albumTypesByAlbumTypeId +
+                ", recordTypesByRecordTypeId=" + recordTypesByRecordTypeId +
+                ", songsById=" + songsById +
+                '}';
+    }
 }

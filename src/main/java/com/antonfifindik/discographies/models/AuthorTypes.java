@@ -61,4 +61,13 @@ public class AuthorTypes {
     public void setAuthorsById(Collection<Authors> authorsById) {
         this.authorsById = authorsById;
     }
+
+    @Override
+    public String toString() {
+        return "AuthorTypes{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", authorsById=" + authorsById +
+                '}';
+    }
 }

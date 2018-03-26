@@ -74,4 +74,14 @@ public class RecordTypes {
     public void setAlbumsById(Collection<Albums> albumsById) {
         this.albumsById = albumsById;
     }
+
+    @Override
+    public String toString() {
+        return "RecordTypes{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", albumsById=" + albumsById +
+                '}';
+    }
 }

@@ -73,4 +73,14 @@ public class Songs {
     public void setAlbumsByAlbumId(Albums albumsByAlbumId) {
         this.albumsByAlbumId = albumsByAlbumId;
     }
+
+    @Override
+    public String toString() {
+        return "Songs{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", trackNum=" + trackNum +
+                ", albumsByAlbumId=" + albumsByAlbumId +
+                '}';
+    }
 }

@@ -12,36 +12,16 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hbm2ddl.auto">validate</property>
 
-        <!--<mapping resource="com/antonfifindik/discographies/models/AlbumTypes.hbm.xml"/>-->
         <mapping class="com.antonfifindik.discographies.models.AlbumTypes"/>
-        <!--<mapping resource="com/antonfifindik/discographies/models/Albums.hbm.xml"/>-->
         <mapping class="com.antonfifindik.discographies.models.Albums"/>
-        <!--<mapping class="com.antonfifindik.discographies.models.AlbumsGenres"/>-->
-        <!--<mapping resource="com/antonfifindik/discographies/models/AlbumsGenres.hbm.xml"/>-->
-        <!--<mapping class="com.antonfifindik.discographies.models.AlbumsLabels"/>-->
-        <!--<mapping resource="com/antonfifindik/discographies/models/AlbumsLabels.hbm.xml"/>-->
-        <!--<mapping class="com.antonfifindik.discographies.models.AlbumsProducers"/>-->
-        <!--<mapping resource="com/antonfifindik/discographies/models/AlbumsProducers.hbm.xml"/>-->
-        <!--<mapping resource="com/antonfifindik/discographies/models/AuthorTypes.hbm.xml"/>-->
         <mapping class="com.antonfifindik.discographies.models.AuthorTypes"/>
         <mapping class="com.antonfifindik.discographies.models.Authors"/>
-        <!--<mapping resource="com/antonfifindik/discographies/models/Authors.hbm.xml"/>-->
-        <!--<mapping class="com.antonfifindik.discographies.models.AuthorsMusicians"/>-->
-        <!--<mapping resource="com/antonfifindik/discographies/models/AuthorsMusicians.hbm.xml"/>-->
         <mapping class="com.antonfifindik.discographies.models.Genres"/>
-        <!--<mapping resource="com/antonfifindik/discographies/models/Genres.hbm.xml"/>-->
         <mapping class="com.antonfifindik.discographies.models.Labels"/>
-        <!--<mapping resource="com/antonfifindik/discographies/models/Labels.hbm.xml"/>-->
-        <!--<mapping resource="com/antonfifindik/discographies/models/Musicians.hbm.xml"/>-->
         <mapping class="com.antonfifindik.discographies.models.Musicians"/>
         <mapping class="com.antonfifindik.discographies.models.Producers"/>
-        <!--<mapping resource="com/antonfifindik/discographies/models/Producers.hbm.xml"/>-->
         <mapping class="com.antonfifindik.discographies.models.RecordTypes"/>
-        <!--<mapping resource="com/antonfifindik/discographies/models/RecordTypes.hbm.xml"/>-->
         <mapping class="com.antonfifindik.discographies.models.Songs"/>
-        <!--<mapping resource="com/antonfifindik/discographies/models/Songs.hbm.xml"/>-->
-        <!-- <property name="connection.username"/> -->
-        <!-- <property name="connection.password"/> -->
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

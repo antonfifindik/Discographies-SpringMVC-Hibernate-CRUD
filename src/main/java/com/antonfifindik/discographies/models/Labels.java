@@ -79,4 +79,13 @@ public class Labels {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Labels{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", photo=" + Arrays.toString(photo) +
+                '}';
+    }
 }
