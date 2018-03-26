@@ -3,7 +3,8 @@ package com.antonfifindik.discographies.models;
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Антон on 26.03.2018.
@@ -19,7 +20,7 @@ public class Albums {
     private Authors authorsByAuthorId;
     private AlbumTypes albumTypesByAlbumTypeId;
     private RecordTypes recordTypesByRecordTypeId;
-    private Collection<Songs> songsById;
+    private Set<Songs> songs = new HashSet<Songs>();
 
     @Id
     @Column(name = "id", nullable = false)
@@ -140,14 +141,15 @@ public class Albums {
 //        this.recordTypesByRecordTypeId = recordTypesByRecordTypeId;
 //    }
 //
-//    @OneToMany(mappedBy = "albumsByAlbumId")
-//    public Collection<Songs> getSongsById() {
-//        return songsById;
-//    }
-//
-//    public void setSongsById(Collection<Songs> songsById) {
-//        this.songsById = songsById;
-//    }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "album", cascade = CascadeType.ALL)
+    public Set<Songs> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(Set<Songs> songs) {
+        this.songs = songs;
+    }
 
     @Override
     public String toString() {
@@ -158,10 +160,10 @@ public class Albums {
                 ", length='" + length + '\'' +
 //                ", cover=" + Arrays.toString(cover) +
                 ", description='" + description + '\'' +
-                ", authorsByAuthorId=" + authorsByAuthorId +
-                ", albumTypesByAlbumTypeId=" + albumTypesByAlbumTypeId +
-                ", recordTypesByRecordTypeId=" + recordTypesByRecordTypeId +
-                ", songsById=" + songsById +
+       //         ", authorsByAuthorId=" + authorsByAuthorId +
+       //         ", albumTypesByAlbumTypeId=" + albumTypesByAlbumTypeId +
+        //        ", recordTypesByRecordTypeId=" + recordTypesByRecordTypeId +
+                ", songs=" + songs +
                 '}';
     }
 }

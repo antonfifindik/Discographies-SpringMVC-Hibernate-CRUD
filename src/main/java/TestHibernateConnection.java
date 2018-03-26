@@ -1,3 +1,5 @@
+import com.antonfifindik.discographies.models.Albums;
+import com.antonfifindik.discographies.models.Songs;
 import org.hibernate.HibernateException;
 import org.hibernate.Metamodel;
 import org.hibernate.query.Query;
@@ -6,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import javax.persistence.metamodel.EntityType;
+import java.util.List;
 
 
 /**
@@ -31,19 +34,36 @@ public class TestHibernateConnection {
 
     public static void main(final String[] args) throws Exception {
         final Session session = getSession();
+        List<Songs> songsList = null;
+        List<Albums> albumsList = null;
         try {
-            System.out.println("querying all the managed entities...");
-            final Metamodel metamodel = session.getSessionFactory().getMetamodel();
-            for (EntityType<?> entityType : metamodel.getEntities()) {
-                final String entityName = entityType.getName();
-                final Query query = session.createQuery("from " + entityName);
-                System.out.println("executing: " + query.getQueryString());
-                for (Object o : query.list()) {
-                    System.out.println("  " + o);
-                }
-            }
+//            System.out.println("querying all the managed entities...");
+//            final Metamodel metamodel = session.getSessionFactory().getMetamodel();
+//            for (EntityType<?> entityType : metamodel.getEntities()) {
+//                final String entityName = entityType.getName();
+//                final Query query = session.createQuery("from " + entityName);
+//                System.out.println("executing: " + query.getQueryString());
+//                for (Object o : query.list()) {
+//                    System.out.println("  " + o);
+//                }
+//            }
+
+            session.beginTransaction();
+
+            songsList = session.createQuery("FROM Songs").list();
+       //     albumsList = session.createQuery("FROM Albums").list();
+            session.getTransaction().commit();
+
         } finally {
             session.close();
+            ourSessionFactory.close();
         }
+
+        for(Songs song : songsList)
+            System.out.println(song);
+
+//        for(Albums album : albumsList)
+//            System.out.println(album);
+
     }
 }

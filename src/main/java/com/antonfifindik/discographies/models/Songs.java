@@ -10,7 +10,7 @@ public class Songs {
     private long id;
     private String name;
     private int trackNum;
-    private Albums albumsByAlbumId;
+    private Albums album;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -64,14 +64,14 @@ public class Songs {
         return result;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "album_id", referencedColumnName = "id", nullable = false)
-    public Albums getAlbumsByAlbumId() {
-        return albumsByAlbumId;
+    public Albums getAlbum() {
+        return album;
     }
 
-    public void setAlbumsByAlbumId(Albums albumsByAlbumId) {
-        this.albumsByAlbumId = albumsByAlbumId;
+    public void setAlbum(Albums albumsByAlbumId) {
+        this.album = albumsByAlbumId;
     }
 
     @Override
@@ -80,7 +80,7 @@ public class Songs {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", trackNum=" + trackNum +
-                ", albumsByAlbumId=" + albumsByAlbumId +
+                ", album=" + album.getName() +
                 '}';
     }
 }
