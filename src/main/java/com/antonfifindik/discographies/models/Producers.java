@@ -80,13 +80,38 @@ public class Producers {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Producers producers = (Producers) o;
+
+        if (id != producers.id) return false;
+        if (firstName != null ? !firstName.equals(producers.firstName) : producers.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(producers.lastName) : producers.lastName != null) return false;
+        if (description != null ? !description.equals(producers.description) : producers.description != null)
+            return false;
+        return Arrays.equals(photo, producers.photo);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + Arrays.hashCode(photo);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "Producers{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", description='" + description + '\'' +
-     //           ", photo=" + Arrays.toString(photo) +
+                //           ", photo=" + Arrays.toString(photo) +
                 '}';
     }
 }

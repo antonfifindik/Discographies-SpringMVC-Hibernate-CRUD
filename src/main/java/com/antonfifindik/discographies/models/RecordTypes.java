@@ -64,9 +64,7 @@ public class RecordTypes {
 
         if (id != that.id) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-
-        return true;
+        return description != null ? description.equals(that.description) : that.description == null;
     }
 
     @Override
@@ -77,14 +75,12 @@ public class RecordTypes {
         return result;
     }
 
-
-
     @Override
     public String toString() {
         return "RecordTypes{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-      //          ", description='" + description + '\'' +
+                //          ", description='" + description + '\'' +
                 ", albums=" + albums.size() +
                 '}';
     }

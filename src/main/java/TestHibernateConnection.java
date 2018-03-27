@@ -50,9 +50,9 @@ public class TestHibernateConnection {
 
             session.beginTransaction();
 
-    //        songsList = session.createQuery("FROM Songs").list();
-           albumsList = session.createQuery("FROM Albums").list();
-           authorsList = session.createQuery("FROM Authors").list();
+            //        songsList = session.createQuery("FROM Songs").list();
+            albumsList = session.createQuery("FROM Albums").list();
+            authorsList = session.createQuery("FROM Authors").list();
             session.getTransaction().commit();
 
         } finally {
@@ -63,15 +63,15 @@ public class TestHibernateConnection {
 //        for(Songs song : songsList)
 //            System.out.println(song);
 
-        for(Albums album : albumsList) {
+        for (Albums album : albumsList) {
             System.out.println(album);
-            for(Producers producer : album.getProducers())
+            for (Producers producer : album.getProducers())
                 System.out.println("Продюсер: " + producer.getFirstName() + " " + producer.getLastName());
-            for(Labels label : album.getLabels())
+            for (Labels label : album.getLabels())
                 System.out.println("Лейбл: " + label.getName());
-            for(Genres genre : album.getGenres())
+            for (Genres genre : album.getGenres())
                 System.out.println(genre);
-            for(Songs song : album.getSongs())
+            for (Songs song : album.getSongs())
                 System.out.println(song);
         }
 
@@ -79,8 +79,8 @@ public class TestHibernateConnection {
         System.out.println();
         System.out.println();
 
-        for(Authors author : authorsList)
-            for(Musicians musician : author.getMusicians())
+        for (Authors author : authorsList)
+            for (Musicians musician : author.getMusicians())
                 System.out.println(musician);
 
     }

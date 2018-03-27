@@ -60,29 +60,6 @@ public class Authors {
         this.photo = photo;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Authors authors = (Authors) o;
-
-        if (id != authors.id) return false;
-        if (name != null ? !name.equals(authors.name) : authors.name != null) return false;
-        if (description != null ? !description.equals(authors.description) : authors.description != null) return false;
-        if (!Arrays.equals(photo, authors.photo)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + Arrays.hashCode(photo);
-        return result;
-    }
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "author", cascade = CascadeType.ALL)
     public Set<Albums> getAlbums() {
@@ -111,6 +88,28 @@ public class Authors {
 
     public void setMusicians(Set<Musicians> musicians) {
         this.musicians = musicians;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Authors authors = (Authors) o;
+
+        if (id != authors.id) return false;
+        if (name != null ? !name.equals(authors.name) : authors.name != null) return false;
+        if (description != null ? !description.equals(authors.description) : authors.description != null) return false;
+        return Arrays.equals(photo, authors.photo);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + Arrays.hashCode(photo);
+        return result;
     }
 
     @Override

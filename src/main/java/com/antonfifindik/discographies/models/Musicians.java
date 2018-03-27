@@ -91,9 +91,7 @@ public class Musicians {
         if (lastName != null ? !lastName.equals(musicians.lastName) : musicians.lastName != null) return false;
         if (description != null ? !description.equals(musicians.description) : musicians.description != null)
             return false;
-        if (!Arrays.equals(photo, musicians.photo)) return false;
-
-        return true;
+        return Arrays.equals(photo, musicians.photo);
     }
 
     @Override
@@ -113,7 +111,7 @@ public class Musicians {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", description='" + description + '\'' +
-    //            ", photo=" + Arrays.toString(photo) +
+                //            ", photo=" + Arrays.toString(photo) +
                 '}';
     }
 }

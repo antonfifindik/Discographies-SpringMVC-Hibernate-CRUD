@@ -42,6 +42,16 @@ public class Songs {
         this.trackNum = trackNum;
     }
 
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "album_id", referencedColumnName = "id", nullable = false)
+    public Albums getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Albums albumsByAlbumId) {
+        this.album = albumsByAlbumId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,9 +61,7 @@ public class Songs {
 
         if (id != songs.id) return false;
         if (trackNum != songs.trackNum) return false;
-        if (name != null ? !name.equals(songs.name) : songs.name != null) return false;
-
-        return true;
+        return name != null ? name.equals(songs.name) : songs.name == null;
     }
 
     @Override
@@ -62,16 +70,6 @@ public class Songs {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + trackNum;
         return result;
-    }
-
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "album_id", referencedColumnName = "id", nullable = false)
-    public Albums getAlbum() {
-        return album;
-    }
-
-    public void setAlbum(Albums albumsByAlbumId) {
-        this.album = albumsByAlbumId;
     }
 
     @Override

@@ -64,9 +64,7 @@ public class Genres {
 
         if (id != genres.id) return false;
         if (name != null ? !name.equals(genres.name) : genres.name != null) return false;
-        if (description != null ? !description.equals(genres.description) : genres.description != null) return false;
-
-        return true;
+        return description != null ? description.equals(genres.description) : genres.description == null;
     }
 
     @Override
@@ -82,7 +80,7 @@ public class Genres {
         return "Genres{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-        //        ", description='" + description + '\'' +
+                //        ", description='" + description + '\'' +
                 '}';
     }
 }

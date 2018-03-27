@@ -156,6 +156,32 @@ public class Albums {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Albums albums = (Albums) o;
+
+        if (id != albums.id) return false;
+        if (name != null ? !name.equals(albums.name) : albums.name != null) return false;
+        if (releaseDate != null ? !releaseDate.equals(albums.releaseDate) : albums.releaseDate != null) return false;
+        if (length != null ? !length.equals(albums.length) : albums.length != null) return false;
+        if (!Arrays.equals(cover, albums.cover)) return false;
+        return description != null ? description.equals(albums.description) : albums.description == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (releaseDate != null ? releaseDate.hashCode() : 0);
+        result = 31 * result + (length != null ? length.hashCode() : 0);
+        result = 31 * result + Arrays.hashCode(cover);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "Albums{" +
                 "id=" + id +
@@ -168,6 +194,8 @@ public class Albums {
                 ", albumType=" + albumType.getName() +
                 ", recordType=" + recordType.getName() +
                 ", songs=" + songs.size() +
+                ", genres=" + songs.size() +
                 '}';
     }
 }
+
