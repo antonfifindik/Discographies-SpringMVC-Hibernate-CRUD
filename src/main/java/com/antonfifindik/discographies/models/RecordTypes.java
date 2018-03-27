@@ -2,6 +2,8 @@ package com.antonfifindik.discographies.models;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Антон on 26.03.2018.
@@ -12,7 +14,7 @@ public class RecordTypes {
     private long id;
     private String name;
     private String description;
-    private Collection<Albums> albumsById;
+    private Set<Albums> albums = new HashSet<Albums>();
 
     @Id
     @Column(name = "id", nullable = false)
@@ -44,6 +46,15 @@ public class RecordTypes {
         this.description = description;
     }
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "recordType", cascade = CascadeType.ALL)
+    public Set<Albums> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(Set<Albums> albums) {
+        this.albums = albums;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -66,14 +77,7 @@ public class RecordTypes {
         return result;
     }
 
-//    @OneToMany(mappedBy = "recordTypesByRecordTypeId")
-//    public Collection<Albums> getAlbumsById() {
-//        return albumsById;
-//    }
 
-    public void setAlbumsById(Collection<Albums> albumsById) {
-        this.albumsById = albumsById;
-    }
 
     @Override
     public String toString() {
@@ -81,7 +85,7 @@ public class RecordTypes {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", albumsById=" + albumsById +
+                ", albums=" + albums.size() +
                 '}';
     }
 }

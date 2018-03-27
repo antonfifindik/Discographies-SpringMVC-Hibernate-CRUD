@@ -51,7 +51,7 @@ public class TestHibernateConnection {
             session.beginTransaction();
 
             songsList = session.createQuery("FROM Songs").list();
-       //     albumsList = session.createQuery("FROM Albums").list();
+//           albumsList = session.createQuery("FROM Albums").list();
             session.getTransaction().commit();
 
         } finally {

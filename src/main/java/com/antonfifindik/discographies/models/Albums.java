@@ -19,7 +19,7 @@ public class Albums {
     private String description;
     private Authors authorsByAuthorId;
     private AlbumTypes albumTypesByAlbumTypeId;
-    private RecordTypes recordTypesByRecordTypeId;
+    private RecordTypes recordType;
     private Set<Songs> songs = new HashSet<Songs>();
 
     @Id
@@ -121,26 +121,16 @@ public class Albums {
 //        this.authorsByAuthorId = authorsByAuthorId;
 //    }
 //
-//    @ManyToOne
-//    @JoinColumn(name = "album_type_id", referencedColumnName = "id", nullable = false)
-//    public AlbumTypes getAlbumTypesByAlbumTypeId() {
-//        return albumTypesByAlbumTypeId;
-//    }
 
-    public void setAlbumTypesByAlbumTypeId(AlbumTypes albumTypesByAlbumTypeId) {
-        this.albumTypesByAlbumTypeId = albumTypesByAlbumTypeId;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "record_type_id", referencedColumnName = "id", nullable = false)
+    public RecordTypes getRecordType() {
+        return recordType;
     }
 
-//    @ManyToOne
-//    @JoinColumn(name = "record_type_id", referencedColumnName = "id", nullable = false)
-//    public RecordTypes getRecordTypesByRecordTypeId() {
-//        return recordTypesByRecordTypeId;
-//    }
-//
-//    public void setRecordTypesByRecordTypeId(RecordTypes recordTypesByRecordTypeId) {
-//        this.recordTypesByRecordTypeId = recordTypesByRecordTypeId;
-//    }
-//
+    public void setRecordType(RecordTypes recordType) {
+        this.recordType = recordType;
+    }
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "album", cascade = CascadeType.ALL)
     public Set<Songs> getSongs() {
@@ -162,8 +152,8 @@ public class Albums {
                 ", description='" + description + '\'' +
        //         ", authorsByAuthorId=" + authorsByAuthorId +
        //         ", albumTypesByAlbumTypeId=" + albumTypesByAlbumTypeId +
-        //        ", recordTypesByRecordTypeId=" + recordTypesByRecordTypeId +
-                ", songs=" + songs +
+                ", recordType=" + recordType.getName() +
+                ", songs=" + songs.size() +
                 '}';
     }
 }
