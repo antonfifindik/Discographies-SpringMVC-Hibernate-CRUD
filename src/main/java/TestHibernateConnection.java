@@ -1,4 +1,5 @@
 import com.antonfifindik.discographies.models.Albums;
+import com.antonfifindik.discographies.models.Genres;
 import com.antonfifindik.discographies.models.Songs;
 import org.hibernate.HibernateException;
 import org.hibernate.Metamodel;
@@ -62,8 +63,14 @@ public class TestHibernateConnection {
 //        for(Songs song : songsList)
 //            System.out.println(song);
 
-        for(Albums album : albumsList)
+        for(Albums album : albumsList) {
             System.out.println(album);
+            for(Genres genre : album.getGenres())
+                System.out.println(genre);
+            for(Songs song : album.getSongs())
+                System.out.println(song);
+        }
+
 
     }
 }

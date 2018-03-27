@@ -21,6 +21,7 @@ public class Albums {
     private AlbumTypes albumType;
     private RecordTypes recordType;
     private Set<Songs> songs = new HashSet<Songs>();
+    private Set<Genres> genres = new HashSet<Genres>();
 
     @Id
     @Column(name = "id", nullable = false)
@@ -148,6 +149,16 @@ public class Albums {
 
     public void setSongs(Set<Songs> songs) {
         this.songs = songs;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "albums_genres", joinColumns = @JoinColumn(name = "album_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
+    public Set<Genres> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(Set<Genres> genres) {
+        this.genres = genres;
     }
 
     @Override
