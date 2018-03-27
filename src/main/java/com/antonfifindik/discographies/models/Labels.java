@@ -3,6 +3,8 @@ package com.antonfifindik.discographies.models;
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Антон on 26.03.2018.
@@ -13,6 +15,7 @@ public class Labels {
     private String name;
     private String description;
     private byte[] photo;
+    private Set<Albums> albums = new HashSet<Albums>();
 
     @Id
     @Column(name = "id", nullable = false)
@@ -55,28 +58,14 @@ public class Labels {
         this.photo = photo;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Labels labels = (Labels) o;
-
-        if (id != labels.id) return false;
-        if (name != null ? !name.equals(labels.name) : labels.name != null) return false;
-        if (description != null ? !description.equals(labels.description) : labels.description != null) return false;
-        if (!Arrays.equals(photo, labels.photo)) return false;
-
-        return true;
+    @ManyToMany
+    @JoinTable(name = "albums_labels", joinColumns = @JoinColumn(name = "label_id"), inverseJoinColumns = @JoinColumn(name = "album_id"))
+    public Set<Albums> getAlbums() {
+        return albums;
     }
 
-    @Override
-    public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + Arrays.hashCode(photo);
-        return result;
+    public void setAlbums(Set<Albums> albums) {
+        this.albums = albums;
     }
 
     @Override
@@ -85,7 +74,7 @@ public class Labels {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-      //          ", photo=" + Arrays.toString(photo) +
+                //          ", photo=" + Arrays.toString(photo) +
                 '}';
     }
 }

@@ -118,7 +118,7 @@ public class Authors {
         return "Authors{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-     //           ", description='" + description + '\'' +
+                //           ", description='" + description + '\'' +
 //                ", photo=" + Arrays.toString(photo) +
                 ", albums=" + albums.size() +
                 ", authorType=" + authorType.getName() +

@@ -23,6 +23,7 @@ public class Albums {
     private Set<Songs> songs = new HashSet<Songs>();
     private Set<Genres> genres = new HashSet<Genres>();
     private Set<Producers> producers = new HashSet<Producers>();
+    private Set<Labels> labels = new HashSet<Labels>();
 
     @Id
     @Column(name = "id", nullable = false)
@@ -85,12 +86,6 @@ public class Albums {
         this.description = description;
     }
 
-
-
-
-
-
-
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
     public Authors getAuthor() {
@@ -150,6 +145,16 @@ public class Albums {
         this.producers = producers;
     }
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "albums_labels", joinColumns = @JoinColumn(name = "album_id"), inverseJoinColumns = @JoinColumn(name = "label_id"))
+    public Set<Labels> getLabels() {
+        return labels;
+    }
+
+    public void setLabels(Set<Labels> labels) {
+        this.labels = labels;
+    }
+
     @Override
     public String toString() {
         return "Albums{" +
@@ -158,7 +163,7 @@ public class Albums {
                 ", releaseDate=" + releaseDate +
                 ", length='" + length + '\'' +
 //                ", cover=" + Arrays.toString(cover) +
-       //         ", description='" + description + '\'' +
+                //         ", description='" + description + '\'' +
                 ", author=" + author.getName() +
                 ", albumType=" + albumType.getName() +
                 ", recordType=" + recordType.getName() +
