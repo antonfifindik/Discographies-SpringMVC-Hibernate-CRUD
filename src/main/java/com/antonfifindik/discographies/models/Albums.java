@@ -22,6 +22,7 @@ public class Albums {
     private RecordTypes recordType;
     private Set<Songs> songs = new HashSet<Songs>();
     private Set<Genres> genres = new HashSet<Genres>();
+    private Set<Producers> producers = new HashSet<Producers>();
 
     @Id
     @Column(name = "id", nullable = false)
@@ -84,33 +85,11 @@ public class Albums {
         this.description = description;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        Albums albums = (Albums) o;
 
-        if (id != albums.id) return false;
-        if (name != null ? !name.equals(albums.name) : albums.name != null) return false;
-        if (releaseDate != null ? !releaseDate.equals(albums.releaseDate) : albums.releaseDate != null) return false;
-        if (length != null ? !length.equals(albums.length) : albums.length != null) return false;
-        if (!Arrays.equals(cover, albums.cover)) return false;
-        if (description != null ? !description.equals(albums.description) : albums.description != null) return false;
 
-        return true;
-    }
 
-    @Override
-    public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (releaseDate != null ? releaseDate.hashCode() : 0);
-        result = 31 * result + (length != null ? length.hashCode() : 0);
-        result = 31 * result + Arrays.hashCode(cover);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        return result;
-    }
+
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
@@ -159,6 +138,16 @@ public class Albums {
 
     public void setGenres(Set<Genres> genres) {
         this.genres = genres;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "albums_producers", joinColumns = @JoinColumn(name = "album_id"), inverseJoinColumns = @JoinColumn(name = "producer_id"))
+    public Set<Producers> getProducers() {
+        return producers;
+    }
+
+    public void setProducers(Set<Producers> producers) {
+        this.producers = producers;
     }
 
     @Override

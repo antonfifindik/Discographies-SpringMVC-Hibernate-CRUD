@@ -3,6 +3,8 @@ package com.antonfifindik.discographies.models;
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Антон on 26.03.2018.
@@ -14,6 +16,7 @@ public class Producers {
     private String lastName;
     private String description;
     private byte[] photo;
+    private Set<Albums> albums = new HashSet<Albums>();
 
     @Id
     @Column(name = "id", nullable = false)
@@ -66,31 +69,14 @@ public class Producers {
         this.photo = photo;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Producers producers = (Producers) o;
-
-        if (id != producers.id) return false;
-        if (firstName != null ? !firstName.equals(producers.firstName) : producers.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(producers.lastName) : producers.lastName != null) return false;
-        if (description != null ? !description.equals(producers.description) : producers.description != null)
-            return false;
-        if (!Arrays.equals(photo, producers.photo)) return false;
-
-        return true;
+    @ManyToMany
+    @JoinTable(name = "albums_producers", joinColumns = @JoinColumn(name = "producer_id"), inverseJoinColumns = @JoinColumn(name = "album_id"))
+    public Set<Albums> getAlbums() {
+        return albums;
     }
 
-    @Override
-    public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + Arrays.hashCode(photo);
-        return result;
+    public void setAlbums(Set<Albums> albums) {
+        this.albums = albums;
     }
 
     @Override

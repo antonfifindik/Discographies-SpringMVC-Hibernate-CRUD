@@ -65,6 +65,8 @@ public class TestHibernateConnection {
 
         for(Albums album : albumsList) {
             System.out.println(album);
+            for(Producers producer : album.getProducers())
+                System.out.println("Продюсер: " + producer.getFirstName() + " " + producer.getLastName());
             for(Genres genre : album.getGenres())
                 System.out.println(genre);
             for(Songs song : album.getSongs())
