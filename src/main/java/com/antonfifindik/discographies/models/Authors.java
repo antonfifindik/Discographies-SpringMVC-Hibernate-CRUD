@@ -3,6 +3,8 @@ package com.antonfifindik.discographies.models;
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Антон on 26.03.2018.
@@ -13,8 +15,8 @@ public class Authors {
     private String name;
     private String description;
     private byte[] photo;
-    private Collection<Albums> albumsById;
-    private AuthorTypes authorTypesByAuthorTypeId;
+    private Set<Albums> albums = new HashSet<Albums>();
+    private AuthorTypes authorType;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -81,23 +83,23 @@ public class Authors {
         return result;
     }
 
-//    @OneToMany(mappedBy = "authorsByAuthorId")
-//    public Collection<Albums> getAlbumsById() {
-//        return albumsById;
-//    }
-
-    public void setAlbumsById(Collection<Albums> albumsById) {
-        this.albumsById = albumsById;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "author", cascade = CascadeType.ALL)
+    public Set<Albums> getAlbums() {
+        return albums;
     }
 
-//    @ManyToOne
-//    @JoinColumn(name = "author_type_id", referencedColumnName = "id", nullable = false)
-//    public AuthorTypes getAuthorTypesByAuthorTypeId() {
-//        return authorTypesByAuthorTypeId;
-//    }
+    public void setAlbums(Set<Albums> albums) {
+        this.albums = albums;
+    }
 
-    public void setAuthorTypesByAuthorTypeId(AuthorTypes authorTypesByAuthorTypeId) {
-        this.authorTypesByAuthorTypeId = authorTypesByAuthorTypeId;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "author_type_id", referencedColumnName = "id", nullable = false)
+    public AuthorTypes getAuthorType() {
+        return authorType;
+    }
+
+    public void setAuthorType(AuthorTypes authorType) {
+        this.authorType = authorType;
     }
 
     @Override
@@ -105,10 +107,10 @@ public class Authors {
         return "Authors{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
+     //           ", description='" + description + '\'' +
 //                ", photo=" + Arrays.toString(photo) +
-                ", albumsById=" + albumsById +
-                ", authorTypesByAuthorTypeId=" + authorTypesByAuthorTypeId +
+                ", albums=" + albums.size() +
+                ", authorType=" + authorType.getName() +
                 '}';
     }
 }

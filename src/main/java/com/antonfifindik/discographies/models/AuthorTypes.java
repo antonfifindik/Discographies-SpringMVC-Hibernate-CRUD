@@ -2,16 +2,18 @@ package com.antonfifindik.discographies.models;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Антон on 26.03.2018.
  */
 @Entity
-@Table(name = "author_types", schema = "db_discographies", catalog = "")
+@Table(name = "author_types", schema = "db_discographies")
 public class AuthorTypes {
     private long id;
     private String name;
-    private Collection<Authors> authorsById;
+    private Set<Authors> authors = new HashSet<Authors>();
 
     @Id
     @Column(name = "id", nullable = false)
@@ -31,6 +33,15 @@ public class AuthorTypes {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "authorType", cascade = CascadeType.ALL)
+    public Set<Authors> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(Set<Authors> authors) {
+        this.authors = authors;
     }
 
     @Override
@@ -53,21 +64,12 @@ public class AuthorTypes {
         return result;
     }
 
-//    @OneToMany(mappedBy = "authorTypesByAuthorTypeId")
-//    public Collection<Authors> getAuthorsById() {
-//        return authorsById;
-//    }
-
-    public void setAuthorsById(Collection<Authors> authorsById) {
-        this.authorsById = authorsById;
-    }
-
     @Override
     public String toString() {
         return "AuthorTypes{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", authorsById=" + authorsById +
+                ", authors=" + authors.size() +
                 '}';
     }
 }
