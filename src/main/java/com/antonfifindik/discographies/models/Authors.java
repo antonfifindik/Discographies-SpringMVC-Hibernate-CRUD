@@ -17,6 +17,7 @@ public class Authors {
     private byte[] photo;
     private Set<Albums> albums = new HashSet<Albums>();
     private AuthorTypes authorType;
+    private Set<Musicians> musicians = new HashSet<Musicians>();
 
     @Id
     @Column(name = "id", nullable = false)
@@ -100,6 +101,16 @@ public class Authors {
 
     public void setAuthorType(AuthorTypes authorType) {
         this.authorType = authorType;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "authors_musicians", joinColumns = @JoinColumn(name = "author_id"), inverseJoinColumns = @JoinColumn(name = "musician_id"))
+    public Set<Musicians> getMusicians() {
+        return musicians;
+    }
+
+    public void setMusicians(Set<Musicians> musicians) {
+        this.musicians = musicians;
     }
 
     @Override

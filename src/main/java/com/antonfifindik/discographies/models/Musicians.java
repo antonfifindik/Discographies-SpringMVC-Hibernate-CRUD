@@ -3,6 +3,8 @@ package com.antonfifindik.discographies.models;
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Антон on 26.03.2018.
@@ -14,6 +16,7 @@ public class Musicians {
     private String lastName;
     private String description;
     private byte[] photo;
+    private Set<Authors> authors = new HashSet<Authors>();
 
     @Id
     @Column(name = "id", nullable = false)
@@ -64,6 +67,16 @@ public class Musicians {
 
     public void setPhoto(byte[] photo) {
         this.photo = photo;
+    }
+
+    @ManyToMany
+    @JoinTable(name = "authors_musicians", joinColumns = @JoinColumn(name = "musician_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
+    public Set<Authors> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(Set<Authors> authors) {
+        this.authors = authors;
     }
 
     @Override

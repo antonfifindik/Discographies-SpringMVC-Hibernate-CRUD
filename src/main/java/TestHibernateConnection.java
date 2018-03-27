@@ -1,6 +1,4 @@
-import com.antonfifindik.discographies.models.Albums;
-import com.antonfifindik.discographies.models.Genres;
-import com.antonfifindik.discographies.models.Songs;
+import com.antonfifindik.discographies.models.*;
 import org.hibernate.HibernateException;
 import org.hibernate.Metamodel;
 import org.hibernate.query.Query;
@@ -37,6 +35,7 @@ public class TestHibernateConnection {
         final Session session = getSession();
         List<Songs> songsList = null;
         List<Albums> albumsList = null;
+        List<Authors> authorsList = null;
         try {
 //            System.out.println("querying all the managed entities...");
 //            final Metamodel metamodel = session.getSessionFactory().getMetamodel();
@@ -53,6 +52,7 @@ public class TestHibernateConnection {
 
     //        songsList = session.createQuery("FROM Songs").list();
            albumsList = session.createQuery("FROM Albums").list();
+           authorsList = session.createQuery("FROM Authors").list();
             session.getTransaction().commit();
 
         } finally {
@@ -71,6 +71,13 @@ public class TestHibernateConnection {
                 System.out.println(song);
         }
 
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
+        for(Authors author : authorsList)
+            for(Musicians musician : author.getMusicians())
+                System.out.println(musician);
 
     }
 }
