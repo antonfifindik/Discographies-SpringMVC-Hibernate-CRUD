@@ -18,7 +18,7 @@ public class Albums {
     private byte[] cover;
     private String description;
     private Authors authorsByAuthorId;
-    private AlbumTypes albumTypesByAlbumTypeId;
+    private AlbumTypes albumType;
     private RecordTypes recordType;
     private Set<Songs> songs = new HashSet<Songs>();
 
@@ -123,6 +123,16 @@ public class Albums {
 //
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "album_type_id", referencedColumnName = "id", nullable = false)
+    public AlbumTypes getAlbumType() {
+        return albumType;
+    }
+
+    public void setAlbumType(AlbumTypes albumType) {
+        this.albumType = albumType;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "record_type_id", referencedColumnName = "id", nullable = false)
     public RecordTypes getRecordType() {
         return recordType;
@@ -149,9 +159,9 @@ public class Albums {
                 ", releaseDate=" + releaseDate +
                 ", length='" + length + '\'' +
 //                ", cover=" + Arrays.toString(cover) +
-                ", description='" + description + '\'' +
+       //         ", description='" + description + '\'' +
        //         ", authorsByAuthorId=" + authorsByAuthorId +
-       //         ", albumTypesByAlbumTypeId=" + albumTypesByAlbumTypeId +
+                ", albumType=" + albumType.getName() +
                 ", recordType=" + recordType.getName() +
                 ", songs=" + songs.size() +
                 '}';

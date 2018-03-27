@@ -84,7 +84,7 @@ public class RecordTypes {
         return "RecordTypes{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
+      //          ", description='" + description + '\'' +
                 ", albums=" + albums.size() +
                 '}';
     }

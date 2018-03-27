@@ -50,8 +50,8 @@ public class TestHibernateConnection {
 
             session.beginTransaction();
 
-            songsList = session.createQuery("FROM Songs").list();
-//           albumsList = session.createQuery("FROM Albums").list();
+    //        songsList = session.createQuery("FROM Songs").list();
+           albumsList = session.createQuery("FROM Albums").list();
             session.getTransaction().commit();
 
         } finally {
@@ -59,11 +59,11 @@ public class TestHibernateConnection {
             ourSessionFactory.close();
         }
 
-        for(Songs song : songsList)
-            System.out.println(song);
+//        for(Songs song : songsList)
+//            System.out.println(song);
 
-//        for(Albums album : albumsList)
-//            System.out.println(album);
+        for(Albums album : albumsList)
+            System.out.println(album);
 
     }
 }
