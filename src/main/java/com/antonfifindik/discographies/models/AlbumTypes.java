@@ -9,7 +9,7 @@ import java.util.Set;
  * Created by Антон on 26.03.2018.
  */
 @Entity
-@Table(name = "album_types", schema = "db_discographies", catalog = "")
+@Table(name = "album_types", schema = "db_discographies")
 public class AlbumTypes {
     private long id;
     private String name;
@@ -46,7 +46,7 @@ public class AlbumTypes {
         this.description = description;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "albumType", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "albumType", cascade = CascadeType.ALL)
     public Set<Albums> getAlbums() {
         return albums;
     }

@@ -65,7 +65,7 @@ public class Albums {
         this.length = length;
     }
 
-    @Basic
+    @Basic(fetch = FetchType.LAZY)
     @Column(name = "cover", nullable = false)
     @Lob
     public byte[] getCover() {

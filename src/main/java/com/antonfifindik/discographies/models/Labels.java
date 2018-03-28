@@ -47,7 +47,7 @@ public class Labels {
         this.description = description;
     }
 
-    @Basic
+    @Basic(fetch = FetchType.LAZY)
     @Column(name = "photo", nullable = true)
     @Lob
     public byte[] getPhoto() {
