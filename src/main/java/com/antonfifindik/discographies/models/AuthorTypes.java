@@ -10,20 +10,9 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "author_types", schema = "db_discographies")
-public class AuthorTypes {
-    private long id;
+public class AuthorTypes extends BaseEntity {
     private String name;
     private Set<Authors> authors = new HashSet<Authors>();
-
-    @Id
-    @Column(name = "id", nullable = false)
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     @Basic
     @Column(name = "name", nullable = false, length = 45)
@@ -51,7 +40,7 @@ public class AuthorTypes {
 
         AuthorTypes that = (AuthorTypes) o;
 
-        if (id != that.id) return false;
+        if (getId() != that.getId()) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
         return true;
@@ -59,7 +48,7 @@ public class AuthorTypes {
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result = (int) (getId() ^ (getId() >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
@@ -67,7 +56,7 @@ public class AuthorTypes {
     @Override
     public String toString() {
         return "AuthorTypes{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", name='" + name + '\'' +
                 ", authors=" + authors.size() +
                 '}';

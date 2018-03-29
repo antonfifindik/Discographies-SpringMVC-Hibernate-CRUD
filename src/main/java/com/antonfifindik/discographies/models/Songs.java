@@ -6,21 +6,10 @@ import javax.persistence.*;
  * Created by Антон on 26.03.2018.
  */
 @Entity
-public class Songs {
-    private long id;
+public class Songs extends BaseEntity {
     private String name;
     private int trackNum;
     private Albums album;
-
-    @Id
-    @Column(name = "id", nullable = false)
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     @Basic
     @Column(name = "name", nullable = false, length = 45)
@@ -59,14 +48,14 @@ public class Songs {
 
         Songs songs = (Songs) o;
 
-        if (id != songs.id) return false;
+        if (getId() != songs.getId()) return false;
         if (trackNum != songs.trackNum) return false;
         return name != null ? name.equals(songs.name) : songs.name == null;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result = (int) (getId() ^ (getId() >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + trackNum;
         return result;
@@ -75,7 +64,7 @@ public class Songs {
     @Override
     public String toString() {
         return "Songs{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", name='" + name + '\'' +
                 ", trackNum=" + trackNum +
                 ", album=" + album.getName() +

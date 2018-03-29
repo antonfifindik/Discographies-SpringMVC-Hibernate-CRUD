@@ -10,24 +10,13 @@ import java.util.Set;
  * Created by Антон on 26.03.2018.
  */
 @Entity
-public class Authors {
-    private long id;
+public class Authors extends BaseEntity {
     private String name;
     private String description;
     private byte[] photo;
     private Set<Albums> albums = new HashSet<Albums>();
     private AuthorTypes authorType;
     private Set<Musicians> musicians = new HashSet<Musicians>();
-
-    @Id
-    @Column(name = "id", nullable = false)
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     @Basic
     @Column(name = "name", nullable = false, length = 45)
@@ -97,7 +86,7 @@ public class Authors {
 
         Authors authors = (Authors) o;
 
-        if (id != authors.id) return false;
+        if (getId() != authors.getId()) return false;
         if (name != null ? !name.equals(authors.name) : authors.name != null) return false;
         if (description != null ? !description.equals(authors.description) : authors.description != null) return false;
         return Arrays.equals(photo, authors.photo);
@@ -105,7 +94,7 @@ public class Authors {
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result = (int) (getId() ^ (getId() >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + Arrays.hashCode(photo);
@@ -115,7 +104,7 @@ public class Authors {
     @Override
     public String toString() {
         return "Authors{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", name='" + name + '\'' +
                 //           ", description='" + description + '\'' +
 //                ", photo=" + Arrays.toString(photo) +

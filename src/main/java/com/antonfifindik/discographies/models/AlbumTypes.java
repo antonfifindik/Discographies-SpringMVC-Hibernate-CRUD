@@ -10,21 +10,10 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "album_types", schema = "db_discographies")
-public class AlbumTypes {
-    private long id;
+public class AlbumTypes extends BaseEntity {
     private String name;
     private String description;
     private Set<Albums> albums = new HashSet<Albums>();
-
-    @Id
-    @Column(name = "id", nullable = false)
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     @Basic
     @Column(name = "name", nullable = false, length = 45)
@@ -62,14 +51,14 @@ public class AlbumTypes {
 
         AlbumTypes that = (AlbumTypes) o;
 
-        if (id != that.id) return false;
+        if (getId() != that.getId()) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         return description != null ? description.equals(that.description) : that.description == null;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result = (int) (getId() ^ (getId() >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         return result;
@@ -78,7 +67,7 @@ public class AlbumTypes {
     @Override
     public String toString() {
         return "AlbumTypes{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", name='" + name + '\'' +
                 //         ", description='" + description + '\'' +
                 ", albums=" + albums.size() +

@@ -10,8 +10,7 @@ import java.util.Set;
  * Created by Антон on 26.03.2018.
  */
 @Entity
-public class Albums {
-    private long id;
+public class Albums extends BaseEntity {
     private String name;
     private Date releaseDate;
     private String length;
@@ -24,16 +23,6 @@ public class Albums {
     private Set<Genres> genres = new HashSet<Genres>();
     private Set<Producers> producers = new HashSet<Producers>();
     private Set<Labels> labels = new HashSet<Labels>();
-
-    @Id
-    @Column(name = "id", nullable = false)
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     @Basic
     @Column(name = "name", nullable = false, length = 45)
@@ -162,7 +151,7 @@ public class Albums {
 
         Albums albums = (Albums) o;
 
-        if (id != albums.id) return false;
+        if (getId() != albums.getId()) return false;
         if (name != null ? !name.equals(albums.name) : albums.name != null) return false;
         if (releaseDate != null ? !releaseDate.equals(albums.releaseDate) : albums.releaseDate != null) return false;
         if (length != null ? !length.equals(albums.length) : albums.length != null) return false;
@@ -172,7 +161,7 @@ public class Albums {
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result = (int) (getId() ^ (getId() >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (releaseDate != null ? releaseDate.hashCode() : 0);
         result = 31 * result + (length != null ? length.hashCode() : 0);
@@ -184,7 +173,7 @@ public class Albums {
     @Override
     public String toString() {
         return "Albums{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", name='" + name + '\'' +
                 ", releaseDate=" + releaseDate +
                 ", length='" + length + '\'' +

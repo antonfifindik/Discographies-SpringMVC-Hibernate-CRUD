@@ -10,23 +10,12 @@ import java.util.Set;
  * Created by Антон on 26.03.2018.
  */
 @Entity
-public class Producers {
-    private long id;
+public class Producers extends BaseEntity {
     private String firstName;
     private String lastName;
     private String description;
     private byte[] photo;
     private Set<Albums> albums = new HashSet<Albums>();
-
-    @Id
-    @Column(name = "id", nullable = false)
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     @Basic
     @Column(name = "first_name", nullable = false, length = 45)
@@ -86,7 +75,7 @@ public class Producers {
 
         Producers producers = (Producers) o;
 
-        if (id != producers.id) return false;
+        if (getId() != producers.getId()) return false;
         if (firstName != null ? !firstName.equals(producers.firstName) : producers.firstName != null) return false;
         if (lastName != null ? !lastName.equals(producers.lastName) : producers.lastName != null) return false;
         if (description != null ? !description.equals(producers.description) : producers.description != null)
@@ -96,7 +85,7 @@ public class Producers {
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result = (int) (getId() ^ (getId() >>> 32));
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
@@ -107,7 +96,7 @@ public class Producers {
     @Override
     public String toString() {
         return "Producers{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", description='" + description + '\'' +

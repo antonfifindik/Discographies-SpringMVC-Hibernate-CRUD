@@ -9,21 +9,10 @@ import java.util.Set;
  * Created by Антон on 26.03.2018.
  */
 @Entity
-public class Genres {
-    private long id;
+public class Genres extends BaseEntity {
     private String name;
     private String description;
     private Set<Albums> albums = new HashSet<Albums>();
-
-    @Id
-    @Column(name = "id", nullable = false)
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     @Basic
     @Column(name = "name", nullable = false, length = 45)
@@ -62,14 +51,14 @@ public class Genres {
 
         Genres genres = (Genres) o;
 
-        if (id != genres.id) return false;
+        if (getId() != genres.getId()) return false;
         if (name != null ? !name.equals(genres.name) : genres.name != null) return false;
         return description != null ? description.equals(genres.description) : genres.description == null;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result = (int) (getId() ^ (getId() >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         return result;
@@ -78,7 +67,7 @@ public class Genres {
     @Override
     public String toString() {
         return "Genres{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", name='" + name + '\'' +
                 //        ", description='" + description + '\'' +
             //    ", albums='" + getAlbums().size() + '\'' +
