@@ -8,12 +8,12 @@ import java.util.List;
 /**
  * Created by Антон on 29.03.2018.
  */
-public interface IDao<T extends BaseEntity> {
-    T getById(Long id) throws DaoException;
+public interface BaseDao<T extends BaseEntity> {
+    T getById(Long id);
 
-    void save(T entity) throws DaoException;
+    void save(T entity);
 
-    void delete(T entity) throws DaoException;
+    void delete(T entity);
 
-    List<T> list() throws DaoException;
+    List<T> list();
 }
