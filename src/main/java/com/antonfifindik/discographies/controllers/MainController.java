@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MainController {
 
     @Autowired
-    private LabelsDao labelsDao;
+    private RecordTypesService recordTypesService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @Transactional
     public String helloWorld() {
 
-        Labels label  = labelsDao.getById(2L);
-        System.out.println(label);
+        RecordTypes recordType = recordTypesService.getById(3L);
+        System.out.println(recordType);
 
         return "home";
     }
