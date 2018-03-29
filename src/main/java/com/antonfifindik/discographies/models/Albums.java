@@ -2,9 +2,7 @@ package com.antonfifindik.discographies.models;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Антон on 26.03.2018.
@@ -187,5 +185,6 @@ public class Albums extends BaseEntity {
                 ", labels=" + labels.size() +
                 '}';
     }
+
 }
 

@@ -24,7 +24,7 @@
     </style>
 
 
-    <title>Hello, world!</title>
+    <title>Альбомы</title>
 </head>
 <body>
 
@@ -58,37 +58,70 @@
     <h2>Альбомы</h2>
 </div>
 
-<a href="#" class="btn btn-primary btn-md active, out" role="button" aria-pressed="true">Добавить альбом</a>
+<a href="#" class="btn btn-primary btn-md active" style="margin-left: 20px" role="button" aria-pressed="true">Добавить
+    альбом</a>
 
-<table id="myTable" class="table table-bordered table-hover">
+<div class="out">
+    <table id="myTable" class="table table-bordered table-hover">
 
-    <thead class="thead-dark">
-    <tr>
-        <th>#</th>
-        <th>Название</th>
-        <th>Автор</th>
-        <th>Дата релиза</th>
-        <th>Тип альбома</th>
-    </tr>
-    </thead>
-
-    <tbody>
-
-    <c:forEach var="album" items="${albumsList}" varStatus="status">
+        <thead class="thead-dark">
         <tr>
-            <th scope="row">${album.id}</th>
-            <td>${album.name}</td>
-            <td>${album.author.name}</td>
-            <td>${album.releaseDate}</td>
-            <td>${album.albumType.name}</td>
-
+            <th width="3%">#</th>
+            <th width="10%">Название</th>
+            <th width="10%">Автор</th>
+            <th width="11%">Дата выпуска</th>
+            <th width="13%">Жанры</th>
+            <th width="13%">Лейблы</th>
+            <th>Продюсеры</th>
         </tr>
-    </c:forEach>
+        </thead>
 
-    </tbody>
+        <tbody>
 
-</table>
+        <c:forEach var="album" items="${albumsList}" varStatus="status">
+            <tr>
+                <th scope="row">${album.id}</th>
+                <td><a href="/infoAlbum?id=${album.id}">${album.name}</a></td>
+                <td><a href="/infoAuthor?id=${album.author.id}">${album.author.name}</a></td>
+                <td>${album.releaseDate}</td>
+                <td style="font-size: x-small">
+                    <c:forEach var="genre" items="${album.genres}" varStatus="i">
+                        <c:if test="${i.index < album.genres.size() - 1}">
+                            <a href="/infoGenre?id=${genre.id}">${genre.name}/</a>
+                        </c:if>
+                        <c:if test="${i.index == album.genres.size() - 1}">
+                            <a href="/infoGenre?id=${genre.id}">${genre.name}</a>
+                        </c:if>
+                    </c:forEach>
+                </td>
+                <td style="font-size: small">
+                    <c:forEach var="label" items="${album.labels}" varStatus="i">
+                        <c:if test="${i.index < album.labels.size() -1}">
+                            <a href="/infoLabel?id=${label.id}">${label.name}/</a>
+                        </c:if>
+                        <c:if test="${i.index == album.labels.size() - 1}">
+                            <a href="/infoLabel?id=${label.id}">${label.name}</a>
+                        </c:if>
+                    </c:forEach>
+                </td>
+                <td style="font-size: small">
+                    <c:forEach var="producer" items="${album.producers}" varStatus="i">
+                        <c:if test="${i.index < album.producers.size() - 1}">
+                            <a href="/infoProducer?id=${producer.id}">${producer.firstName} ${producer.lastName}/</a>
+                        </c:if>
+                        <c:if test="${i.index == album.producers.size() - 1}">
+                            <a href="/infoProducer?id=${producer.id}">${producer.firstName} ${producer.lastName}</a>
+                        </c:if>
+                    </c:forEach>
+                </td>
 
+            </tr>
+        </c:forEach>
+
+        </tbody>
+
+    </table>
+</div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
