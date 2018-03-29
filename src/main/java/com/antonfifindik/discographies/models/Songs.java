@@ -42,7 +42,7 @@ public class Songs {
         this.trackNum = trackNum;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "album_id", referencedColumnName = "id", nullable = false)
     public Albums getAlbum() {
         return album;

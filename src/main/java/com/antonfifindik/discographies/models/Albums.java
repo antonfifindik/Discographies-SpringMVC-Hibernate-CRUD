@@ -194,7 +194,8 @@ public class Albums {
                 ", albumType=" + albumType.getName() +
                 ", recordType=" + recordType.getName() +
                 ", songs=" + songs.size() +
-                ", genres=" + songs.size() +
+                ", genres=" + genres.size() +
+                ", labels=" + labels.size() +
                 '}';
     }
 }

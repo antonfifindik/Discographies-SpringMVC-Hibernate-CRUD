@@ -1,7 +1,6 @@
 package com.antonfifindik.discographies.controllers;
 
-import com.antonfifindik.discographies.models.AlbumTypes;
-import com.antonfifindik.discographies.models.Albums;
+import com.antonfifindik.discographies.models.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -19,23 +19,18 @@ import java.util.List;
 @Controller
 public class MainController {
 
-    //for test
     @Autowired
     private SessionFactory sessionFactory;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @Transactional
     public String helloWorld() {
+        Session session = sessionFactory.getCurrentSession();
+        List<Albums> list = session.createQuery("FROM Albums").list();
 
-//        Session session = sessionFactory.getCurrentSession();
-//        List<Albums> albumsList = session.createQuery("FROM Albums").list();
-//
-//        for(Albums album : albumsList)
-//            System.out.println(album.getName());
+        for(Albums album : list)
+            System.out.println(album);
 
-        System.out.println("ААААААААААААААААААААААААААААААААААААААА");
-
-        return "index";
+        return "home";
     }
-
 }

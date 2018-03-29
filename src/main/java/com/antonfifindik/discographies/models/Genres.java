@@ -81,6 +81,7 @@ public class Genres {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 //        ", description='" + description + '\'' +
+            //    ", albums='" + getAlbums().size() + '\'' +
                 '}';
     }
 }

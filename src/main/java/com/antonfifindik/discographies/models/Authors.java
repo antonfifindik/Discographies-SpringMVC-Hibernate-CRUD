@@ -61,7 +61,7 @@ public class Authors {
     }
 
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "author", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "author", cascade = CascadeType.ALL)
     public Set<Albums> getAlbums() {
         return albums;
     }
@@ -119,7 +119,7 @@ public class Authors {
                 ", name='" + name + '\'' +
                 //           ", description='" + description + '\'' +
 //                ", photo=" + Arrays.toString(photo) +
-                ", albums=" + albums.size() +
+        //       ", albums=" + albums.size() +
                 ", authorType=" + authorType.getName() +
                 '}';
     }

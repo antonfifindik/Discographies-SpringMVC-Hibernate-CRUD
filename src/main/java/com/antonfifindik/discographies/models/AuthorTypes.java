@@ -35,7 +35,7 @@ public class AuthorTypes {
         this.name = name;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "authorType", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "authorType", cascade = CascadeType.ALL)
     public Set<Authors> getAuthors() {
         return authors;
     }
