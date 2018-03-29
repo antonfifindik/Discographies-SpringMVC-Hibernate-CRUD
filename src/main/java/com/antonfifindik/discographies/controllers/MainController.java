@@ -1,13 +1,15 @@
 package com.antonfifindik.discographies.controllers;
 
-import com.antonfifindik.discographies.dao.DaoException;
 import com.antonfifindik.discographies.interfaces.*;
 import com.antonfifindik.discographies.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.List;
 
 
 /**
@@ -18,14 +20,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MainController {
 
     @Autowired
-    private RecordTypesService recordTypesService;
+    private AlbumsService albumsService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
     @Transactional
-    public String helloWorld() {
+    public String home(Model model) {
 
-        RecordTypes recordType = recordTypesService.getById(3L);
-        System.out.println(recordType);
+        List<Albums> albumsList = albumsService.list();
+        model.addAttribute("albumsList", albumsList);
 
         return "home";
     }
