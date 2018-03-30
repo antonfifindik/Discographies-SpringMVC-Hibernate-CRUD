@@ -70,9 +70,12 @@
             <th width="10%">Название</th>
             <th width="10%">Автор</th>
             <th width="11%">Дата выпуска</th>
-            <th width="13%">Жанры</th>
+            <th width="18%">Жанры</th>
             <th width="13%">Лейблы</th>
-            <th>Продюсеры</th>
+            <th width="16%">Продюсеры</th>
+            <th>Тип альбома</th>
+            <th>Тип записи</th>
+
         </tr>
         </thead>
 
@@ -114,6 +117,9 @@
                         </c:if>
                     </c:forEach>
                 </td>
+
+                <td><a href="/infoAlbumType?id=${album.albumType.id}">${album.albumType.name}</a></td>
+                <td><a href="/infoRecordType?id=${album.recordType.id}">${album.recordType.name}</a></td>
 
             </tr>
         </c:forEach>
