@@ -58,7 +58,7 @@
     <h2>Альбомы</h2>
 </div>
 
-<a href="#" class="btn btn-primary btn-md active " data-toggle="modal" data-target="#exampleModal"
+<a href="/addAlbum" class="btn btn-primary btn-md"
    style="margin-left: 20px" role="button" aria-pressed="true">Добавить
     альбом</a>
 
