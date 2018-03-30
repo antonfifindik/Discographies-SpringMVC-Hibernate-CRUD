@@ -58,7 +58,8 @@
     <h2>Альбомы</h2>
 </div>
 
-<a href="#" class="btn btn-primary btn-md active" style="margin-left: 20px" role="button" aria-pressed="true">Добавить
+<a href="#" class="btn btn-primary btn-md active " data-toggle="modal" data-target="#exampleModal"
+   style="margin-left: 20px" role="button" aria-pressed="true">Добавить
     альбом</a>
 
 <div class="out">
@@ -67,16 +68,15 @@
         <thead class="thead-dark">
         <tr>
             <th width="3%">#</th>
-            <th>Обложка</th>
-            <th width="10%">Название</th>
-            <th width="10%">Автор</th>
-            <th width="11%">Дата выпуска</th>
-            <th width="18%">Жанры</th>
-            <th width="13%">Лейблы</th>
-            <th width="16%">Продюсеры</th>
-            <th>Тип альбома</th>
-            <th>Тип записи</th>
-
+            <th width="1%">Обложка</th>
+            <th width="7%">Название</th>
+            <th width="7%">Автор</th>
+            <th width="7%">Релиз</th>
+            <th width="13%">Жанры</th>
+            <th width="8%">Лейблы</th>
+            <th width="6%">Длина</th>
+            <th width="8%">Тип</th>
+            <th width="11%"></th>
         </tr>
         </thead>
 
@@ -85,7 +85,9 @@
         <c:forEach var="album" items="${albumsList}" varStatus="status">
             <tr>
                 <th scope="row">${album.id}</th>
-                <td><img alt="img" src="data:image/jpeg;base64,${album.toEncodeBase64()}" width="60px" height="60px"></td>
+                <td><a href="/infoAlbum?id=${album.id}"><img alt="img"
+                                                             src="data:image/jpeg;base64,${album.toEncodeBase64()}"
+                                                             width="50px" height="50px"></a></td>
                 <td><a href="/infoAlbum?id=${album.id}">${album.name}</a></td>
                 <td><a href="/infoAuthor?id=${album.author.id}">${album.author.name}</a></td>
                 <td>${album.releaseDate}</td>
@@ -110,18 +112,20 @@
                     </c:forEach>
                 </td>
                 <td style="font-size: small">
-                    <c:forEach var="producer" items="${album.producers}" varStatus="i">
-                        <c:if test="${i.index < album.producers.size() - 1}">
-                            <a href="/infoProducer?id=${producer.id}">${producer.firstName} ${producer.lastName}/</a>
-                        </c:if>
-                        <c:if test="${i.index == album.producers.size() - 1}">
-                            <a href="/infoProducer?id=${producer.id}">${producer.firstName} ${producer.lastName}</a>
-                        </c:if>
-                    </c:forEach>
+                        ${album.length}<br>${album.songs.size()} треков
                 </td>
 
-                <td><a href="/infoAlbumType?id=${album.albumType.id}">${album.albumType.name}</a></td>
-                <td><a href="/infoRecordType?id=${album.recordType.id}">${album.recordType.name}</a></td>
+                <td style="font-size: small"><a
+                        href="/infoAlbumType?id=${album.albumType.id}">${album.albumType.name}/<a
+                        href="/infoRecordType?id=${album.recordType.id}">${album.recordType.name}</a></td>
+
+                <td>
+                    <a href="/editAlbum?id=${album.id}" class="btn btn-sm btn-warning"
+                       style="width: 75px" role="button" aria-pressed="true">Изменить</a>
+                    <a href="/deleteAlbum?id=${album.id}" class="btn btn-sm btn-danger"
+                       style="width: 75px" role="button" aria-pressed="true">Удалить</a>
+                </td>
+
 
             </tr>
         </c:forEach>
@@ -130,6 +134,38 @@
 
     </table>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Добавление нового альбома</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2>Тест</h2>
+                Йорк полагал, что его музыка стала, своего рода, частью постоянного фонового шума, который он называл
+                «жужжанием холодильника» и при этом стал ещё более враждебно относиться к музыкальным СМИ. Он также
+                говорил, что стал ещё более разочаровываться в «мифологии» рок-музыки, чувствуя при этом, что сам жанр
+                изжил себя. Исходя из своих утверждений, Йорк начал слушать исключительно электронную музыку таких
+                исполнителей как Aphex Twin и Autechre: "Это было глотком свежего воздуха для меня. Структура этой
+                музыки совсем не имела в себе человеческого голоса. Но я чувствовал себя также эмоционально, так как я
+                никогда не чувствовал себя слушая исключительно гитарную музыку".
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
+                <button type="button" class="btn btn-primary">Добавить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
