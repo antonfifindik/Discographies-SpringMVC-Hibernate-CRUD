@@ -68,17 +68,30 @@
         <h1>Добавить альбом</h1>
     </div>
 
-    <form name="order" action="/addAlbum" method="post" style="margin-top: 20px">
+
+    <form name="album" action="/addAlbum" method="post" style="margin-top: 20px">
+
+        <div class="input-group aligntop">
+            <input type="text" id="name" name="name" class="form-control" placeholder="Название альбома" required>
+        </div>
+
         <div style="display: flex; justify-content:center;" class="aligntop">
-            <select class="form-control" id="author" name="author" required>
+            <select class="form-control" id="author" name="author" required style="margin-top: 10px">
                 <option selected disabled value=''>Автор</option>
                 <c:forEach items="${authorsList}" var="item">
                     <option value="${item.id}">${item.name}</option>
                 </c:forEach>
             </select>
-            <a href="/addAuthor" class="btn btn-primary btn-sm"
-               style="margin-left: 20px" role="button" aria-pressed="true">Добавить
-                автора</a>
+        </div>
+
+        <div class="input-group aligntop">
+            <input type="text" id="releaseDate" name="releaseDate" class="form-control" placeholder="Дата релиза" required
+                   style="margin-top: 10px">
+        </div>
+
+        <div class="input-group aligntop">
+            <input type="text" id="length" name="length" class="form-control" placeholder="Продолжительность" required
+                   style="margin-top: 10px">
         </div>
 
         <div style="display: flex; justify-content:center;" class="aligntop">
@@ -115,9 +128,18 @@
         </div>
 
         <div class="form-group">
-            <label style="margin-right: 230px" for="exampleFormControlFile1">Загрузите обложку</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            <label style="margin-right: 230px" for="cover">Загрузите обложку</label>
+            <input type="file" name="cover" class="form-control-file" id="cover" required>
         </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Описания альбома</span>
+            </div>
+            <textarea class="form-control" id="description" name="description" aria-label="With textarea" required></textarea>
+        </div>
+
+        <input type="submit" value="Добавить" class="btn btn-success aligntop" style="margin-top: 10px">
 
     </form>
 </div>
