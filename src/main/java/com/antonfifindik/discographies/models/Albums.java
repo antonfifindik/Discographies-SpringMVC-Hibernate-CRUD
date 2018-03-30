@@ -1,5 +1,7 @@
 package com.antonfifindik.discographies.models;
 
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.*;
@@ -184,6 +186,10 @@ public class Albums extends BaseEntity {
                 ", genres=" + genres.size() +
                 ", labels=" + labels.size() +
                 '}';
+    }
+
+    public String toEncodeBase64() {
+        return Base64.encode(cover);
     }
 
 }

@@ -2,6 +2,7 @@ package com.antonfifindik.discographies.controllers;
 
 import com.antonfifindik.discographies.interfaces.*;
 import com.antonfifindik.discographies.models.*;
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;

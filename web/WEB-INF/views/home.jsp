@@ -67,6 +67,7 @@
         <thead class="thead-dark">
         <tr>
             <th width="3%">#</th>
+            <th>Обложка</th>
             <th width="10%">Название</th>
             <th width="10%">Автор</th>
             <th width="11%">Дата выпуска</th>
@@ -84,10 +85,11 @@
         <c:forEach var="album" items="${albumsList}" varStatus="status">
             <tr>
                 <th scope="row">${album.id}</th>
+                <td><img alt="img" src="data:image/jpeg;base64,${album.toEncodeBase64()}" width="60px" height="60px"></td>
                 <td><a href="/infoAlbum?id=${album.id}">${album.name}</a></td>
                 <td><a href="/infoAuthor?id=${album.author.id}">${album.author.name}</a></td>
                 <td>${album.releaseDate}</td>
-                <td style="font-size: x-small">
+                <td style="font-size: small">
                     <c:forEach var="genre" items="${album.genres}" varStatus="i">
                         <c:if test="${i.index < album.genres.size() - 1}">
                             <a href="/infoGenre?id=${genre.id}">${genre.name}/</a>
