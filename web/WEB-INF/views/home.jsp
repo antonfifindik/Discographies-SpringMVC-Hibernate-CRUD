@@ -48,7 +48,7 @@
                 <a class="nav-link" href="#">Жанры</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
+                <a class="nav-link" href="/test">Тест</a>
             </li>
         </ul>
     </div>

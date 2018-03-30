@@ -32,4 +32,9 @@ public class MainController {
 
         return "home";
     }
+
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public String test() {
+        return "test";
+    }
 }
