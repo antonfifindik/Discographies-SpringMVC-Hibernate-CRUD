@@ -177,7 +177,7 @@ public class Albums extends BaseEntity {
                 ", name='" + name + '\'' +
                 ", releaseDate=" + releaseDate +
                 ", length='" + length + '\'' +
-//                ", cover=" + Arrays.toString(cover) +
+               ", cover=" + cover.length +
                 //         ", description='" + description + '\'' +
                 ", author=" + author.getName() +
                 ", albumType=" + albumType.getName() +

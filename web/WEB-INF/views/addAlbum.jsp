@@ -85,7 +85,7 @@
         </div>
 
         <div class="input-group aligntop">
-            <input type="text" id="releaseDate" name="releaseDate" class="form-control" placeholder="Дата релиза"
+            <input type="text" id="releaseDate" name="releaseDate" class="form-control" placeholder="Дата релиза (день-месяц-год)"
                    required
                    style="margin-top: 10px">
         </div>
@@ -167,7 +167,7 @@
 
         <div style="display: flex; justify-content:center;" class="aligntop">
 
-            <select multiple class="form-control" id="producer" name="pruducer" required style="margin-top: 10px">
+            <select multiple class="form-control" id="producer" name="producer" required style="margin-top: 10px">
                 <option selected disabled value=''>Продюсеры</option>
                 <c:forEach items="${producersList}" var="item">
                     <option value="${item.id}">${item.firstName} ${item.lastName}</option>
@@ -212,7 +212,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="songModalLabel">Добавление нового жанра</h5>
+                <h5 class="modal-title" id="songModalLabel">Добавление новой песни</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
