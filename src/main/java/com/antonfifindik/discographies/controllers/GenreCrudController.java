@@ -1,6 +1,7 @@
 package com.antonfifindik.discographies.controllers;
 
 import com.antonfifindik.discographies.interfaces.GenresService;
+import com.antonfifindik.discographies.models.Genres;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,8 +23,11 @@ public class GenreCrudController {
     @Transactional
     public String addAlbum(HttpServletRequest request) {
 
-        System.out.println(request.getParameter("genreName"));
-        System.out.println(request.getParameter("genreDescription"));
+        Genres newGenre = new Genres();
+        newGenre.setName(request.getParameter("genreName"));
+        newGenre.setDescription(request.getParameter("genreDescription"));
+        genresService.save(newGenre);
+
         return "redirect:/addAlbum";
     }
 
