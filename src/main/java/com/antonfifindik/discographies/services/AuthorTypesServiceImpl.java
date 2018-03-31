@@ -16,7 +16,7 @@ import java.util.List;
 public class AuthorTypesServiceImpl implements AuthorTypesService {
 
     @Autowired
-    AuthorTypesDao authorTypesDao;
+    private AuthorTypesDao authorTypesDao;
 
     @Transactional(readOnly = true)
     public AuthorTypes getById(Long id) {

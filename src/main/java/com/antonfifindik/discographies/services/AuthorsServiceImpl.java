@@ -16,7 +16,7 @@ import java.util.List;
 public class AuthorsServiceImpl implements AuthorsService {
 
     @Autowired
-    AuthorsDao authorsDao;
+    private AuthorsDao authorsDao;
 
     @Transactional(readOnly = true)
     public Authors getById(Long id) {

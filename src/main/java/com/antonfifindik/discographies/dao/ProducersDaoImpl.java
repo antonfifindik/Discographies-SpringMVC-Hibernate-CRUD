@@ -15,7 +15,7 @@ import java.util.List;
 public class ProducersDaoImpl implements ProducersDao {
 
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     public Producers getById(Long id) {
         return sessionFactory.getCurrentSession().get(Producers.class, id);

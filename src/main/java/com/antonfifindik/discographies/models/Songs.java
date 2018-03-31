@@ -32,7 +32,7 @@ public class Songs extends BaseEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "album_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "album_id", referencedColumnName = "id")
     public Albums getAlbum() {
         return album;
     }

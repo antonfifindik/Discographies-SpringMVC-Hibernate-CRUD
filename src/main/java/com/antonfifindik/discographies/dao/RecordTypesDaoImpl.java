@@ -15,7 +15,7 @@ import java.util.List;
 public class RecordTypesDaoImpl implements RecordTypesDao {
 
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     public RecordTypes getById(Long id) {
         return sessionFactory.getCurrentSession().get(RecordTypes.class, id);

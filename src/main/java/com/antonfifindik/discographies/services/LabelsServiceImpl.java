@@ -16,7 +16,7 @@ import java.util.List;
 public class LabelsServiceImpl implements LabelsService {
 
     @Autowired
-    LabelsDao labelsDao;
+    private LabelsDao labelsDao;
 
     @Transactional(readOnly = true)
     public Labels getById(Long id) {

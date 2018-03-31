@@ -16,7 +16,7 @@ import java.util.List;
 public class SongsServiceImpl implements SongsService {
 
     @Autowired
-    SongsDao songsDao;
+    private SongsDao songsDao;
 
     @Transactional(readOnly = true)
     public Songs getById(Long id) {

@@ -15,7 +15,7 @@ import java.util.List;
 public class GenresDaoImpl implements GenresDao {
 
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     public Genres getById(Long id) {
         return sessionFactory.getCurrentSession().get(Genres.class, id);

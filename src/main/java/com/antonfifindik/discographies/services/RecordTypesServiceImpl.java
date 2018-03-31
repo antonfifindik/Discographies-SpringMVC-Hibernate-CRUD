@@ -16,7 +16,7 @@ import java.util.List;
 public class RecordTypesServiceImpl implements RecordTypesService {
 
     @Autowired
-    RecordTypesDao recordTypesDao;
+    private RecordTypesDao recordTypesDao;
 
     @Transactional(readOnly = true)
     public RecordTypes getById(Long id) {

@@ -15,7 +15,7 @@ import java.util.List;
 public class SongsDaoImpl implements SongsDao {
 
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     public Songs getById(Long id) {
         return sessionFactory.getCurrentSession().get(Songs.class, id);

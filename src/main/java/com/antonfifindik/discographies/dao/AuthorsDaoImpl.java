@@ -15,7 +15,7 @@ import java.util.List;
 public class AuthorsDaoImpl implements AuthorsDao {
 
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     public Authors getById(Long id) {
         return sessionFactory.getCurrentSession().get(Authors.class, id);

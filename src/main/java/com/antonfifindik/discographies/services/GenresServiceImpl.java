@@ -17,7 +17,7 @@ import java.util.List;
 public class GenresServiceImpl implements GenresService {
 
     @Autowired
-    GenresDao genresDao;
+    private GenresDao genresDao;
 
     @Transactional(readOnly = true)
     public Genres getById(Long id) {

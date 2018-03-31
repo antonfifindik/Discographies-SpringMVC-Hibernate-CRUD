@@ -16,7 +16,7 @@ import java.util.List;
 public class AlbumTypesServiceImpl implements AlbumTypesService {
 
     @Autowired
-    AlbumTypesDao albumTypesDao;
+    private AlbumTypesDao albumTypesDao;
 
     @Transactional(readOnly = true)
     public AlbumTypes getById(Long id) {

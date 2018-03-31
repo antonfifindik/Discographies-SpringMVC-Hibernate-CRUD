@@ -119,6 +119,22 @@
 
         <div style="display: flex; justify-content:center;" class="aligntop">
 
+            <select multiple class="form-control" id="song" name="song" required style="margin-top: 10px">
+                <option selected disabled value=''>Песни</option>
+                <c:forEach items="${songsList}" var="item">
+                    <option value="${item.id}">${item.trackNum}. "${item.name}"</option>
+                </c:forEach>
+            </select>
+
+
+        </div>
+
+        <a href="#" class="btn btn-primary btn-sm active " data-toggle="modal" data-target="#addSongModal"
+           style="margin-right: 320px" role="button" aria-pressed="true">+ Песня</a>
+
+
+        <div style="display: flex; justify-content:center;" class="aligntop">
+
             <select multiple class="form-control" id="genre" name="genre" required style="margin-top: 10px">
                 <option selected disabled value=''>Жанры</option>
                 <c:forEach items="${genresList}" var="item">
@@ -152,7 +168,7 @@
         <div style="display: flex; justify-content:center;" class="aligntop">
 
             <select multiple class="form-control" id="producer" name="pruducer" required style="margin-top: 10px">
-                <option selected disabled value=''>Лейблы</option>
+                <option selected disabled value=''>Продюсеры</option>
                 <c:forEach items="${producersList}" var="item">
                     <option value="${item.id}">${item.firstName} ${item.lastName}</option>
                 </c:forEach>
@@ -187,6 +203,43 @@
         </div>
 
     </form>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="addSongModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="songModalLabel">Добавление нового жанра</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form name="genre" action="/addSong" method="post" style="margin-top: 20px">
+
+                    <div class="input-group aligntop">
+                        <input type="text" id="songName" name="songName" class="form-control"
+                               placeholder="Название песни" required>
+                    </div>
+
+                    <div class="input-group aligntop">
+                        <input style="margin-top: 20px" type="text" id="songNum" name="songNum" class="form-control"
+                               placeholder="Номер в альбоме" required>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
+                        <input type="submit" value="Добавить" class="btn btn-success">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 

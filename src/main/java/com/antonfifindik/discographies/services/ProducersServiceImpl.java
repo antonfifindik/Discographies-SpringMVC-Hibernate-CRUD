@@ -16,7 +16,7 @@ import java.util.List;
 public class ProducersServiceImpl implements ProducersService {
 
     @Autowired
-    ProducersDao producersDao;
+    private ProducersDao producersDao;
 
     @Transactional(readOnly = true)
     public Producers getById(Long id) {

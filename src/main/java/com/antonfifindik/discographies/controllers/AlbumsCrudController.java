@@ -1,6 +1,8 @@
 package com.antonfifindik.discographies.controllers;
 
 import com.antonfifindik.discographies.interfaces.*;
+import com.antonfifindik.discographies.models.Albums;
+import com.antonfifindik.discographies.models.Songs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,25 +24,25 @@ import java.util.List;
 public class AlbumsCrudController {
 
     @Autowired
-    AlbumsService albumsService;
+    private AlbumsService albumsService;
     @Autowired
-    AlbumTypesService albumTypesService;
+    private AlbumTypesService albumTypesService;
     @Autowired
-    AuthorsService authorsService;
+    private AuthorsService authorsService;
     @Autowired
-    AuthorTypesService authorTypesService;
+    private AuthorTypesService authorTypesService;
     @Autowired
-    GenresService genresService;
+    private GenresService genresService;
     @Autowired
-    LabelsService labelsService;
+    private LabelsService labelsService;
     @Autowired
-    MusiciansService musiciansService;
+    private MusiciansService musiciansService;
     @Autowired
-    ProducersService producersService;
+    private ProducersService producersService;
     @Autowired
-    RecordTypesService recordTypesService;
+    private RecordTypesService recordTypesService;
     @Autowired
-    SongsService songsService;
+    private SongsService songsService;
 
     @RequestMapping(value = "/addAlbum", method = RequestMethod.GET)
     @Transactional
@@ -50,6 +53,13 @@ public class AlbumsCrudController {
         model.addAttribute("labelsList", labelsService.list());
         model.addAttribute("producersList", producersService.list());
         model.addAttribute("recordTypesList", recordTypesService.list());
+        //     model.addAttribute("songsList", songsService.list().stream().filter((s) -> s.getAlbum() == null).toArray());
+        List<Songs> unselectedSongs = new ArrayList<Songs>();
+        for(Songs song : songsService.list())
+            if(song.getAlbum() == null)
+                unselectedSongs.add(song);
+
+        model.addAttribute("songsList", unselectedSongs);
 
         return "addAlbum";
     }
@@ -58,33 +68,11 @@ public class AlbumsCrudController {
     @Transactional
     public String addAlbum(HttpServletRequest request, @RequestParam("cover") MultipartFile cover) {
 
-        //for test
-        System.out.println(request.getParameter("name"));
-        System.out.println(request.getParameter("author"));
-        System.out.println(request.getParameter("releaseDate"));
-        System.out.println(request.getParameter("length"));
-        System.out.println(request.getParameter("albumType"));
-        System.out.println(request.getParameter("recordType"));
+        Albums newAlbum = new Albums();
+        newAlbum.setName(request.getParameter("name"));
+        newAlbum.setAuthor(authorsService.getById(Long.parseLong(request.getParameter("author"))));
+        //    SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
 
-        for (String id : request.getParameterValues("genre"))
-            System.out.print(id + ", ");
-        System.out.println();
-
-        for (String id : request.getParameterValues("label"))
-            System.out.print(id + ", ");
-        System.out.println();
-
-        if (!cover.isEmpty()) {
-            try {
-                byte[] bytes = cover.getBytes(); // alternatively, file.getInputStream();
-                System.out.println(bytes.length);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-
-        System.out.println(request.getParameter("description"));
         return "redirect:/home";
     }
 

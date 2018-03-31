@@ -15,7 +15,7 @@ import java.util.List;
 public class AlbumTypesDaoImpl implements AlbumTypesDao {
 
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     public AlbumTypes getById(Long id) {
         return sessionFactory.getCurrentSession().get(AlbumTypes.class, id);

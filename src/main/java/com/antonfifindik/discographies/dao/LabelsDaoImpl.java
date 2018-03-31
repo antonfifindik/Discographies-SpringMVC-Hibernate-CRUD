@@ -15,7 +15,7 @@ import java.util.List;
 public class LabelsDaoImpl implements LabelsDao {
 
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     public Labels getById(Long id) {
         return sessionFactory.getCurrentSession().get(Labels.class, id);
