@@ -7,15 +7,18 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
 
 /**
  * Created by Антон on 30.03.2018.
  */
 @Controller
-public class AlbumCrudController {
+public class AlbumsCrudController {
 
     @Autowired
     AlbumsService albumsService;
@@ -67,7 +70,14 @@ public class AlbumCrudController {
             System.out.print(id + ", ");
         System.out.println();
 
+        for(String id : request.getParameterValues("label"))
+            System.out.print(id + ", ");
+        System.out.println();
+
         System.out.println(request.getParameter("cover"));
+
+
+
 
         System.out.println(request.getParameter("description"));
         return "redirect:/home";

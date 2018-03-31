@@ -132,9 +132,26 @@
         <a href="#" class="btn btn-primary btn-sm active " data-toggle="modal" data-target="#addGenreModal"
            style="margin-right: 320px" role="button" aria-pressed="true">+ Жанр</a>
 
+
+        <div style="display: flex; justify-content:center;" class="aligntop">
+
+            <select multiple class="form-control" id="label" name="label" required style="margin-top: 10px">
+                <option selected disabled value=''>Лейблы</option>
+                <c:forEach items="${labelsList}" var="item">
+                    <option value="${item.id}">${item.name}</option>
+                </c:forEach>
+            </select>
+
+
+        </div>
+
+        <a href="#" class="btn btn-primary btn-sm active " data-toggle="modal" data-target="#addLabelModal"
+           style="margin-right: 320px" role="button" aria-pressed="true">+ Лейбл</a>
+
+
         <div class="form-group">
             <label style="margin-right: 230px" for="cover">Загрузите обложку</label>
-            <input type="file" name="cover" class="form-control-file" id="cover" required>
+            <input formenctype="multipart/form-data" type="file" name="cover" class="form-control-file" id="cover" required>
         </div>
 
         <div class="input-group">
@@ -145,7 +162,12 @@
                       required></textarea>
         </div>
 
-        <input type="submit" value="Добавить" class="btn btn-success aligntop" style="margin-top: 10px">
+        <div style="margin-top: 10px">
+            <a href="/" class="btn btn-primary btn-md"
+               style="margin-left: 20px" role="button" aria-pressed="true">Отмена</a>
+            <input type="submit" value="Добавить" class="btn btn-success aligntop">
+
+        </div>
 
     </form>
 </div>
@@ -176,6 +198,46 @@
                             <span class="input-group-text">Описания жанра</span>
                         </div>
                         <textarea class="form-control" id="genreDescription" name="genreDescription"
+                                  aria-label="With textarea"
+                                  required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
+                        <input type="submit" value="Добавить" class="btn btn-success">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="addLabelModal" tabindex="-1" role="dialog" aria-labelledby="labelModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="labelModalLabel">Добавление нового лейбла</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form name="genre" action="/addLabel" method="post" style="margin-top: 20px">
+
+                    <div class="input-group aligntop">
+                        <input type="text" id="labelName" name="genreName" class="form-control"
+                               placeholder="Название лейбла" required>
+                    </div>
+
+                    <div class="input-group" style="margin-top: 20px">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Описания лейбла</span>
+                        </div>
+                        <textarea class="form-control" id="labelDescription" name="genreDescription"
                                   aria-label="With textarea"
                                   required></textarea>
                     </div>

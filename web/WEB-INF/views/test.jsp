@@ -65,6 +65,13 @@
     <h2>Тест</h2>
 </div>
 
+
+<form action="/testing" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <input type="submit" value="Upload"/>
+</form>
+
+
 <div style="margin: 20px">
     <table id="example" class="table table-striped table-bordered">
         <thead>

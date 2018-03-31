@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created by Антон on 31.03.2018.
  */
 @Controller
-public class GenreCrudController {
+public class GenresCrudController {
 
     @Autowired
     GenresService genresService;
