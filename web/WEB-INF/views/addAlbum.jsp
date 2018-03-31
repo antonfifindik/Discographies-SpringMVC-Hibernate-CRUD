@@ -149,6 +149,22 @@
            style="margin-right: 320px" role="button" aria-pressed="true">+ Лейбл</a>
 
 
+        <div style="display: flex; justify-content:center;" class="aligntop">
+
+            <select multiple class="form-control" id="producer" name="pruducer" required style="margin-top: 10px">
+                <option selected disabled value=''>Лейблы</option>
+                <c:forEach items="${producersList}" var="item">
+                    <option value="${item.id}">${item.firstName} ${item.lastName}</option>
+                </c:forEach>
+            </select>
+
+
+        </div>
+
+        <a href="#" class="btn btn-primary btn-sm active " data-toggle="modal" data-target="#addProducerModal"
+           style="margin-right: 320px" role="button" aria-pressed="true">+ Продюсер</a>
+
+
         <div class="form-group">
             <label style="margin-right: 230px" for="cover">Загрузите обложку</label>
             <input formenctype="multipart/form-data" type="file" name="cover" class="form-control-file" id="cover"
@@ -248,6 +264,63 @@
                         <label style="margin-right: 230px" for="cover">Загрузите обложку</label>
                         <input formenctype="multipart/form-data" type="file" name="labelImage"
                                class="form-control-file" id="labelImage"
+                               required>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
+                        <input type="submit" value="Добавить" class="btn btn-success">
+                    </div>
+
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="addProducerModal" tabindex="-1" role="dialog" aria-labelledby="labelModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ProducerModalLabel">Добавление нового продюсера</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form name="genre" enctype="multipart/form-data" action="/addProducer" method="post"
+                      style="margin-top: 20px">
+
+                    <div class="input-group aligntop">
+                        <input type="text" id="producerFirstName" name="producerFirstName" class="form-control"
+                               placeholder="Имя продюсера" required>
+                    </div>
+
+                    <div class="input-group aligntop">
+                        <input style="margin-top: 20px" type="text" id="producerLastName" name="producerLastName"
+                               class="form-control"
+                               placeholder="Фамилия продюсера" required>
+                    </div>
+
+                    <div class="input-group" style="margin-top: 20px">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Описания лейбла</span>
+                        </div>
+                        <textarea class="form-control" id="producerDescription" name="producerDescription"
+                                  aria-label="With textarea"
+                                  required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="margin-right: 230px" for="cover">Загрузите обложку</label>
+                        <input formenctype="multipart/form-data" type="file" name="producerImage"
+                               class="form-control-file" id="producerImage"
                                required>
                     </div>
 
