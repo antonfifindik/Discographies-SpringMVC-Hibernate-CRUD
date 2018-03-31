@@ -56,7 +56,7 @@ public class AlbumsCrudController {
 
     @RequestMapping(value = "/addAlbum", method = RequestMethod.POST)
     @Transactional
-    public String addAlbum(HttpServletRequest request) {
+    public String addAlbum(HttpServletRequest request, @RequestParam("cover") MultipartFile cover) {
 
         //for test
         System.out.println(request.getParameter("name"));
@@ -66,18 +66,23 @@ public class AlbumsCrudController {
         System.out.println(request.getParameter("albumType"));
         System.out.println(request.getParameter("recordType"));
 
-        for(String id : request.getParameterValues("genre"))
+        for (String id : request.getParameterValues("genre"))
             System.out.print(id + ", ");
         System.out.println();
 
-        for(String id : request.getParameterValues("label"))
+        for (String id : request.getParameterValues("label"))
             System.out.print(id + ", ");
         System.out.println();
 
-        System.out.println(request.getParameter("cover"));
+        if (!cover.isEmpty()) {
+            try {
+                byte[] bytes = cover.getBytes(); // alternatively, file.getInputStream();
+                System.out.println(bytes.length);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-
-
+        }
 
         System.out.println(request.getParameter("description"));
         return "redirect:/home";

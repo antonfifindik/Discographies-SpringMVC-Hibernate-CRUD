@@ -69,7 +69,7 @@
     </div>
 
 
-    <form name="album" action="/addAlbum" method="post" style="margin-top: 20px">
+    <form name="album" enctype="multipart/form-data" action="/addAlbum" method="post" style="margin-top: 20px">
 
         <div class="input-group aligntop">
             <input type="text" id="name" name="name" class="form-control" placeholder="Название альбома" required>
@@ -151,7 +151,8 @@
 
         <div class="form-group">
             <label style="margin-right: 230px" for="cover">Загрузите обложку</label>
-            <input formenctype="multipart/form-data" type="file" name="cover" class="form-control-file" id="cover" required>
+            <input formenctype="multipart/form-data" type="file" name="cover" class="form-control-file" id="cover"
+                   required>
         </div>
 
         <div class="input-group">
@@ -226,10 +227,11 @@
             </div>
             <div class="modal-body">
 
-                <form name="genre" action="/addLabel" method="post" style="margin-top: 20px">
+                <form name="genre" enctype="multipart/form-data" action="/addLabel" method="post"
+                      style="margin-top: 20px">
 
                     <div class="input-group aligntop">
-                        <input type="text" id="labelName" name="genreName" class="form-control"
+                        <input type="text" id="labelName" name="labelName" class="form-control"
                                placeholder="Название лейбла" required>
                     </div>
 
@@ -237,14 +239,24 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Описания лейбла</span>
                         </div>
-                        <textarea class="form-control" id="labelDescription" name="genreDescription"
+                        <textarea class="form-control" id="labelDescription" name="labelDescription"
                                   aria-label="With textarea"
                                   required></textarea>
                     </div>
+
+                    <div class="form-group">
+                        <label style="margin-right: 230px" for="cover">Загрузите обложку</label>
+                        <input formenctype="multipart/form-data" type="file" name="labelImage"
+                               class="form-control-file" id="labelImage"
+                               required>
+                    </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
                         <input type="submit" value="Добавить" class="btn btn-success">
                     </div>
+
+
                 </form>
             </div>
 

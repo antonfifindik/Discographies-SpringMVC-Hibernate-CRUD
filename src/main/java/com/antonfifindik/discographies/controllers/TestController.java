@@ -22,20 +22,6 @@ public class TestController {
         return "test";
     }
 
-    @RequestMapping(value = "/testing", method = RequestMethod.POST)
-    public String addAlbum(@RequestParam("file") MultipartFile file) {
 
-        if (!file.isEmpty()) {
-            try {
-                byte[] bytes = file.getBytes(); // alternatively, file.getInputStream();
-                System.out.println(bytes.length);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            // application logic
-        }
-
-        return "redirect:/test";
-    }
 
 }
