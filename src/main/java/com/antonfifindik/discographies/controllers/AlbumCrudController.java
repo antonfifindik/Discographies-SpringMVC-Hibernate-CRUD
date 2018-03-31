@@ -62,8 +62,13 @@ public class AlbumCrudController {
         System.out.println(request.getParameter("length"));
         System.out.println(request.getParameter("albumType"));
         System.out.println(request.getParameter("recordType"));
-        System.out.println(request.getParameter("genre"));
-   //     System.out.println(request.getIn);
+
+        for(String id : request.getParameterValues("genre"))
+            System.out.print(id + ", ");
+        System.out.println();
+
+        System.out.println(request.getParameter("cover"));
+
         System.out.println(request.getParameter("description"));
         return "redirect:/home";
     }

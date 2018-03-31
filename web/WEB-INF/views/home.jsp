@@ -136,36 +136,6 @@
 </div>
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Добавление нового альбома</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2>Тест</h2>
-                Йорк полагал, что его музыка стала, своего рода, частью постоянного фонового шума, который он называл
-                «жужжанием холодильника» и при этом стал ещё более враждебно относиться к музыкальным СМИ. Он также
-                говорил, что стал ещё более разочаровываться в «мифологии» рок-музыки, чувствуя при этом, что сам жанр
-                изжил себя. Исходя из своих утверждений, Йорк начал слушать исключительно электронную музыку таких
-                исполнителей как Aphex Twin и Autechre: "Это было глотком свежего воздуха для меня. Структура этой
-                музыки совсем не имела в себе человеческого голоса. Но я чувствовал себя также эмоционально, так как я
-                никогда не чувствовал себя слушая исключительно гитарную музыку".
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
-                <button type="button" class="btn btn-primary">Добавить</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

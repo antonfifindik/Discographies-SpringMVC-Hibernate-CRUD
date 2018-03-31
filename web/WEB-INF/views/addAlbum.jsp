@@ -85,7 +85,8 @@
         </div>
 
         <div class="input-group aligntop">
-            <input type="text" id="releaseDate" name="releaseDate" class="form-control" placeholder="Дата релиза" required
+            <input type="text" id="releaseDate" name="releaseDate" class="form-control" placeholder="Дата релиза"
+                   required
                    style="margin-top: 10px">
         </div>
 
@@ -125,7 +126,11 @@
                 </c:forEach>
             </select>
 
+
         </div>
+
+        <a href="#" class="btn btn-primary btn-sm active " data-toggle="modal" data-target="#addGenreModal"
+           style="margin-right: 320px" role="button" aria-pressed="true">+ Жанр</a>
 
         <div class="form-group">
             <label style="margin-right: 230px" for="cover">Загрузите обложку</label>
@@ -136,13 +141,56 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">Описания альбома</span>
             </div>
-            <textarea class="form-control" id="description" name="description" aria-label="With textarea" required></textarea>
+            <textarea class="form-control" id="description" name="description" aria-label="With textarea"
+                      required></textarea>
         </div>
 
         <input type="submit" value="Добавить" class="btn btn-success aligntop" style="margin-top: 10px">
 
     </form>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="addGenreModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Добавление нового жанра</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form name="genre" action="/addGenre" method="post" style="margin-top: 20px">
+
+                    <div class="input-group aligntop">
+                        <input type="text" id="genreName" name="genreName" class="form-control"
+                               placeholder="Название жанра" required>
+                    </div>
+
+                    <div class="input-group" style="margin-top: 20px">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Описания жанра</span>
+                        </div>
+                        <textarea class="form-control" id="genreDescription" name="genreDescription"
+                                  aria-label="With textarea"
+                                  required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
+                        <input type="submit" value="Добавить" class="btn btn-success">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
