@@ -10,6 +10,9 @@ import java.util.Set;
  */
 @Entity
 public class Musicians extends BaseEntity {
+
+    private static final long serialVersionUID = -5676655350464906893L;
+
     private String firstName;
     private String lastName;
     private String description;

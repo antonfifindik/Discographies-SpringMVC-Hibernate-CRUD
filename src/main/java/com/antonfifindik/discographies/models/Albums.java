@@ -11,6 +11,9 @@ import java.util.*;
  */
 @Entity
 public class Albums extends BaseEntity {
+
+    private static final long serialVersionUID = 5913513329858679424L;
+
     private String name;
     private Date releaseDate;
     private String length;
@@ -177,7 +180,7 @@ public class Albums extends BaseEntity {
                 ", name='" + name + '\'' +
                 ", releaseDate=" + releaseDate +
                 ", length='" + length + '\'' +
-               ", cover=" + cover.length +
+                ", cover=" + cover.length +
                 //         ", description='" + description + '\'' +
                 ", author=" + author.getName() +
                 ", albumType=" + albumType.getName() +

@@ -10,6 +10,9 @@ import java.util.Set;
  */
 @Entity
 public class Authors extends BaseEntity {
+
+    private static final long serialVersionUID = 4467355893352825731L;
+
     private String name;
     private String description;
     private byte[] photo;

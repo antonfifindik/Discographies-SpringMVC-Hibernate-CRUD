@@ -10,6 +10,9 @@ import java.util.Set;
 @Entity
 @Table(name = "album_types", schema = "db_discographies")
 public class AlbumTypes extends BaseEntity {
+
+    private static final long serialVersionUID = -8747285181511920056L;
+
     private String name;
     private String description;
     private Set<Albums> albums = new HashSet<Albums>();

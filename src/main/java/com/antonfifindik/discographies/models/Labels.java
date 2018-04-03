@@ -10,6 +10,9 @@ import java.util.Set;
  */
 @Entity
 public class Labels extends BaseEntity {
+
+    private static final long serialVersionUID = -7444787316979040675L;
+
     private String name;
     private String description;
     private byte[] photo;

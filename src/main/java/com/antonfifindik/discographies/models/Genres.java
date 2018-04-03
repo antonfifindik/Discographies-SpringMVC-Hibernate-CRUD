@@ -9,6 +9,9 @@ import java.util.Set;
  */
 @Entity
 public class Genres extends BaseEntity {
+
+    private static final long serialVersionUID = 6228991603044645243L;
+
     private String name;
     private String description;
     private Set<Albums> albums = new HashSet<Albums>();

@@ -7,6 +7,9 @@ import javax.persistence.*;
  */
 @Entity
 public class Songs extends BaseEntity {
+
+    private static final long serialVersionUID = -355009426115039487L;
+
     private String name;
     private int trackNum;
     private Albums album;

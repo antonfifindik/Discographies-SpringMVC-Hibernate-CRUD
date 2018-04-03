@@ -10,6 +10,9 @@ import java.util.Set;
  */
 @Entity
 public class Producers extends BaseEntity {
+
+    private static final long serialVersionUID = 6238774772577959534L;
+
     private String firstName;
     private String lastName;
     private String description;
