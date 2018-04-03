@@ -32,13 +32,9 @@ public class AlbumsCrudController {
     @Autowired
     private AuthorsService authorsService;
     @Autowired
-    private AuthorTypesService authorTypesService;
-    @Autowired
     private GenresService genresService;
     @Autowired
     private LabelsService labelsService;
-    @Autowired
-    private MusiciansService musiciansService;
     @Autowired
     private ProducersService producersService;
     @Autowired
@@ -70,50 +66,7 @@ public class AlbumsCrudController {
     @Transactional
     public String addAlbum(HttpServletRequest request, @RequestParam("cover") MultipartFile cover) {
 
-        Albums newAlbum = new Albums();
-        newAlbum.setName(request.getParameter("name"));
-        newAlbum.setAuthor(authorsService.getById(Long.parseLong(request.getParameter("author"))));
-        String[] dateArray = request.getParameter("releaseDate").split("-");
-
-        newAlbum.setReleaseDate(new Date(Integer.parseInt(dateArray[2]) - 1900, Integer.parseInt(dateArray[1]) - 1, Integer.parseInt(dateArray[0])));
-
-        newAlbum.setLength(request.getParameter("length"));
-        newAlbum.setAlbumType(albumTypesService.getById(Long.parseLong(request.getParameter("albumType"))));
-        newAlbum.setRecordType(recordTypesService.getById(Long.parseLong(request.getParameter("recordType"))));
-
-        Set<Songs> songsSet = new HashSet<Songs>();
-        for (String id : request.getParameterValues("song"))
-            songsSet.add(songsService.getById(Long.parseLong(id)));
-
-        newAlbum.setSongs(songsSet);
-
-        Set<Genres> genresSet = new HashSet<Genres>();
-        for (String id : request.getParameterValues("genre"))
-            genresSet.add(genresService.getById(Long.parseLong(id)));
-
-        newAlbum.setGenres(genresSet);
-
-        Set<Labels> labelsSet = new HashSet<Labels>();
-        for (String id : request.getParameterValues("label"))
-            labelsSet.add(labelsService.getById(Long.parseLong(id)));
-
-        newAlbum.setLabels(labelsSet);
-
-        Set<Producers> producersSet = new HashSet<Producers>();
-        for (String id : request.getParameterValues("producer"))
-            producersSet.add(producersService.getById(Long.parseLong(id)));
-
-        newAlbum.setProducers(producersSet);
-
-        try {
-            newAlbum.setCover(cover.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        newAlbum.setDescription(request.getParameter("description"));
-
-        albumsService.save(newAlbum);
+        //TODO ...
 
         return "redirect:/home";
     }

@@ -117,21 +117,6 @@
 
         </div>
 
-        <div style="display: flex; justify-content:center;" class="aligntop">
-
-            <select multiple class="form-control" id="song" name="song" required style="margin-top: 10px">
-                <option selected disabled value=''>Песни</option>
-                <c:forEach items="${songsList}" var="item">
-                    <option value="${item.id}">${item.trackNum}. "${item.name}"</option>
-                </c:forEach>
-            </select>
-
-
-        </div>
-
-        <a href="#" class="btn btn-primary btn-sm active " data-toggle="modal" data-target="#addSongModal"
-           style="margin-right: 320px" role="button" aria-pressed="true">+ Песня</a>
-
 
         <div style="display: flex; justify-content:center;" class="aligntop">
 
